@@ -187,6 +187,27 @@ function	script	F_PremiumSoulLinkSkill	{
 			return 494; // SL_HIGH / Spirit of Rebirth
 	}
 
+	// EAJ_UPPERMASK is only enough for second/trans-second jobs. Third and
+	// Fourth jobs retain their own map IDs there, so resolve their lineage from
+	// EAJ_THIRDMASK first (it strips the Fourth-job bit as well).
+	switch (.@eac&EAJ_THIRDMASK) {
+	case EAJ_RUNE_KNIGHT: return 452; // SL_KNIGHT
+	case EAJ_WARLOCK: return 453; // SL_WIZARD
+	case EAJ_RANGER: return 460; // SL_HUNTER
+	case EAJ_ARCH_BISHOP: return 454; // SL_PRIEST, including Cardinal
+	case EAJ_MECHANIC: return 458; // SL_BLACKSMITH
+	case EAJ_GUILLOTINE_CROSS: return 457; // SL_ASSASIN
+	case EAJ_ROYAL_GUARD: return 450; // SL_CRUSADER
+	case EAJ_SORCERER: return 449; // SL_SAGE
+	case EAJ_MINSTRELWANDERER: return 455; // SL_BARDDANCER
+	case EAJ_SURA: return 447; // SL_MONK
+	case EAJ_GENETIC: return 445; // SL_ALCHEMIST
+	case EAJ_SHADOW_CHASER: return 456; // SL_ROGUE
+	case EAJ_SOUL_REAPER: return 461; // SL_SOULLINKER
+	case EAJ_STAR_EMPEROR: return 448; // SL_STAR
+	case EAJ_SUPER_NOVICE_E: return 451; // SL_SUPERNOVICE
+	}
+
 	switch (.@eac&EAJ_UPPERMASK) {
 	// Skill names are not script constants. Keep these verified skill_db IDs.
 	case EAJ_ALCHEMIST: return 445; // SL_ALCHEMIST
@@ -197,7 +218,7 @@ function	script	F_PremiumSoulLinkSkill	{
 	case EAJ_HUNTER: return 460; // SL_HUNTER
 	case EAJ_KNIGHT: return 452; // SL_KNIGHT
 	case EAJ_MONK: return 447; // SL_MONK
-	case EAJ_PRIEST: return 454; // SL_PRIEST, including High Priest, Arch Bishop, and Cardinal
+	case EAJ_PRIEST: return 454; // SL_PRIEST, including High Priest
 	case EAJ_ROGUE: return 456; // SL_ROGUE
 	case EAJ_SAGE: return 449; // SL_SAGE
 	case EAJ_SOULLINKER: return 461; // SL_SOULLINKER
@@ -347,6 +368,11 @@ S_BuyBuff:
 	.@tier = getarg(0);
 	.@cost = getarg(1);
 	.@label$ = getarg(2);
+	// Resolve once here so the paid Package 5 result and its dialogue use
+	// exactly the same Soul Link decision.
+	.@spirit = 0;
+	if (.@tier == 5)
+		.@spirit = callfunc("F_PremiumSoulLinkSkill");
 	if (countitem(6909) < .@cost) {
 		cutin "prm_4",2;
 		mes "[Premi]";
@@ -371,7 +397,7 @@ S_BuyBuff:
 		return;
 	}
 	delitem 6909, .@cost;
-	callsub S_ApplyBuffPackage, .@tier;
+	callsub S_ApplyBuffPackage, .@tier, .@spirit;
 	cutin "prm_3",2;
 	mes "[Premi]";
 	mes "Yay! " + .@label$ + " is running for 5 minutes!";
@@ -384,6 +410,7 @@ S_BuyBuff:
 
 S_ApplyBuffPackage:
 	.@tier = getarg(0);
+	.@spirit = getarg(1);
 	.@buff_time = 300000;
 	sc_start SC_INCREASEAGI, .@buff_time, 10;
 	sc_start SC_BLESSING, .@buff_time, 10;
@@ -403,12 +430,8 @@ S_ApplyBuffPackage:
 		sc_start2 SC_OVERTHRUST, .@buff_time, 5, 1;
 		sc_start SC_WEAPONPERFECTION, .@buff_time, 5;
 	}
-	.@spirit = 0;
-	if (.@tier == 5) {
-		.@spirit = callfunc("F_PremiumSoulLinkSkill");
-		if (.@spirit)
-			sc_start2 SC_SPIRIT, .@buff_time, 5, .@spirit;
-	}
+	if (.@tier == 5 && .@spirit)
+		sc_start2 SC_SPIRIT, .@buff_time, 5, .@spirit;
 	return;
 
 S_RefuseIfRunning:
