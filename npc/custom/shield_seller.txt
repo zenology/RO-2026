@@ -60,8 +60,9 @@ paramk,33,166,4	script	Kaedra#offline	4_F_ESTLOVELOY,{
 		if (.@letter == 7) .@shop$ = "shd1#Upgrade Part Equipment";
 	}
 	if (.@shop$ == "") { close; }
+	callfunc "F_BlackMarketDailyRemark", "Kaedra", $BlackMarketRateKaedra;
 	close2;
-	callshop .@shop$, 1;
+	callblackmarketshop .@shop$, 1, $BlackMarketRateKaedra;
 	end;
 
 OnInit:

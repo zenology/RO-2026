@@ -130,8 +130,9 @@ paramk,47,186,4	script	Corvin#offline	512,{
 	mes "Would you like to browse the collection?";
 	next;
 	.@s = select(.@menu$) -1;
+	callfunc "F_BlackMarketDailyRemark", "Corvin", $BlackMarketRateCards;
 	close2;
-	callshop "card_mob#"+ getvariableofnpc( .alphabet$[.@s], "card_seller_creation" ), 1;
+	callblackmarketshop "card_mob#"+ getvariableofnpc( .alphabet$[.@s], "card_seller_creation" ), 1, $BlackMarketRateCards;
 	end;
 
 OnInit:
@@ -190,8 +191,9 @@ paramk,49,186,4	script	Corven#offline	512,{
 	mes "Would you like to browse the collection?";
 	next;
 	.@s = select(.@menu$) -1;
+	callfunc "F_BlackMarketDailyRemark", "Corven", $BlackMarketRateCards;
 	close2;
-	callshop "card_miniboss#"+ getvariableofnpc( .alphabet$[.@s], "miniboss_card_seller_creation" ), 1;
+	callblackmarketshop "card_miniboss#"+ getvariableofnpc( .alphabet$[.@s], "miniboss_card_seller_creation" ), 1, $BlackMarketRateCards;
 	end;
 
 OnInit:
@@ -262,8 +264,9 @@ paramk,51,186,4	script	Veynar#offline	10576,{
 	switch (select("Show me your MVP cards.:I know you have something more valuable.:")) {
 	case 1:
 		.@s = select(.@mvp_menu$) - 1;
+		callfunc "F_BlackMarketDailyRemark", "Veynar", $BlackMarketRateCards;
 		close2;
-		callshop "card_mvp#" + getvariableofnpc( .alphabet$[.@s], "mvp_card_seller_creation" ), 1;
+		callblackmarketshop "card_mvp#" + getvariableofnpc( .alphabet$[.@s], "mvp_card_seller_creation" ), 1, $BlackMarketRateCards;
 		end;
 	case 2:
 		mes "[Veynar]";
@@ -281,8 +284,9 @@ paramk,51,186,4	script	Veynar#offline	10576,{
 		mes "Very well. You may look upon the cards no other merchant can offer.";
 		next;
 		.@s = select(.@special_menu$) - 1;
+		callfunc "F_BlackMarketDailyRemark", "Veynar", $BlackMarketRateCards;
 		close2;
-		callshop "card_special#" + getvariableofnpc( .special_alphabet$[.@s], "mvp_card_seller_creation" ), 1;
+		callblackmarketshop "card_special#" + getvariableofnpc( .special_alphabet$[.@s], "mvp_card_seller_creation" ), 1, $BlackMarketRateCards;
 		end;
 	}
 	end;

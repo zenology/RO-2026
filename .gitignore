@@ -81,8 +81,7 @@ Thumbs.db
 /src/common/obj_sql
 /src/common/version.hpp
 
-# /src/custom/
-/src/custom
+# /src/custom/ is project-owned extension source and is tracked normally.
 
 # /src/login/
 /src/login/Makefile

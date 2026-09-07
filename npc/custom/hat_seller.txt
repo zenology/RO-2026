@@ -95,8 +95,9 @@ S_OpenCatalog:
 		.@letter$ = getvariableofnpc(.SpecLetter$[.@idx], "hat_seller_db");
 	else
 		.@letter$ = getvariableofnpc(.EvtLetter$[.@idx], "hat_seller_db");
+	callfunc "F_BlackMarketDailyRemark", "Harlan", $BlackMarketRateHarlan;
 	close2;
-	callshop .@prefix$ + .@slot + "#" + .@letter$, 1;
+	callblackmarketshop .@prefix$ + .@slot + "#" + .@letter$, 1, $BlackMarketRateHarlan;
 	end;
 
 }

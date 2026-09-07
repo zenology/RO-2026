@@ -129,8 +129,9 @@ paramk,23,160,4	script	Lady Seraphine Vellmont#offline	4_EP16_EGEO,{
 		}
 	}
 	if (.@shop$ == "") close;
+	callfunc "F_BlackMarketDailyRemark", "Lady Seraphine Vellmont", $BlackMarketRateSeraphine;
 	close2;
-	callshop .@shop$, 1;
+	callblackmarketshop .@shop$, 1, $BlackMarketRateSeraphine;
 	end;
 
 OnInit:
