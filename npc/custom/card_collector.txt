@@ -355,8 +355,23 @@ paramk,41,157,2	duplicate(Guard#card_collector_1)	Guard#card_collector_2	405,2,1
 
 // Room-entrance guard: same balloon warning pattern, different sprite and lines.
 paramk,14,175,4	script	Guard#black_market_door	686,2,1,{
-	callsub S_Warn;
-	end;
+	mes "[Guard]";
+	mes "This isn't a hallway. State your business.";
+	next;
+	if (select("How are the market rates today?:Never mind.") == 2)
+		close;
+
+	mes "[Guard]";
+	mes "The current adjustment is against each drawer's listed Cash Point price.";
+	mes "Harlan: " + $BlackMarketRateHarlan + "%";
+	mes "Soren: " + $BlackMarketRateSoren + "%";
+	mes "Mordain: " + $BlackMarketRateMordain + "%";
+	mes "Kaedra: " + $BlackMarketRateKaedra + "%";
+	mes "Tess: " + $BlackMarketRateTess + "%";
+	mes "Weaver: " + $BlackMarketRateWeaver + "%";
+	mes "Lady Seraphine: " + $BlackMarketRateSeraphine + "%";
+	mes "Cards (Corvin, Corven, Veynar): " + $BlackMarketRateCards + "%";
+	close;
 
 OnTouch:
 	callsub S_Warn;
