@@ -287,17 +287,86 @@ izlude,1,1,4	script	Premi#src	4_F_PREMI,{
 	mes "[Premi]";
 	mes "What do you need?";
 	next;
-	switch (select("Buff me.:Premium extras.:Just checking.")) {
-	case 1:
+	.@in_black_market = (strcharinfo(3) == "paramk");
+	.@menu$ = "Buff me.:Premium extras.:";
+	if (!.@in_black_market)
+		.@menu$ += "Take me to the Black Market. (1 Nyangvine):";
+	.@menu$ += "Just checking:";
+	.@choice = select(.@menu$);
+	if (.@choice == 1) {
 		goto S_BuffMenu;
-	case 2:
+	}
+	if (.@choice == 2) {
 		goto S_ExtrasMenu;
-	default:
-		cutin "prm_3",2;
+	}
+	if (!.@in_black_market && .@choice == 3) {
+		goto S_BlackMarket;
+	}
+	cutin "prm_3",2;
+	mes "[Premi]";
+	mes "Okay! Call me again if you need anything!";
+	goto L_End;
+
+S_BlackMarket:
+	// Premi is duplicated onto the invoking player's current map. With no mode
+	// argument, instance_id() therefore checks that map rather than an owned
+	// party/guild/character instance that the player may not currently be in.
+	if (instance_id() > 0) {
+		cutin "prm_4",2;
 		mes "[Premi]";
-		mes "Okay! Call me again if you need anything!";
+		mes "I can't take you to the Black Market from an instance map...";
+		mes "Finish your instance first, okay?";
 		goto L_End;
 	}
+	if (countitem(6909) < 1) {
+		cutin "prm_4",2;
+		mes "[Premi]";
+		mes "I need 1 Nyangvine to get you into the Black Market...";
+		goto L_End;
+	}
+	cutin "prm_2",2;
+	mes "[Premi]";
+	mes "For 1 Nyangvine, I'll remember exactly where you're standing.";
+	mes "The Black Market Contact can bring you back here afterward!";
+	next;
+	if (select("Travel:Never mind") == 2) {
+		cutin "prm_5",2;
+		mes "[Premi]";
+		mes "Ah... o-okay. Never mind then.";
+		goto L_End;
+	}
+	if (instance_id() > 0) {
+		cutin "prm_4",2;
+		mes "[Premi]";
+		mes "I can't take you to the Black Market from an instance map...";
+		goto L_End;
+	}
+	if (countitem(6909) < 1) {
+		cutin "prm_4",2;
+		mes "[Premi]";
+		mes "The Nyangvine is gone...";
+		goto L_End;
+	}
+	if (getmapxy(.@return_map$,.@return_x,.@return_y) != 0) {
+		cutin "prm_4",2;
+		mes "[Premi]";
+		mes "I couldn't remember where you're standing. Try calling me again.";
+		goto L_End;
+	}
+	// Permanent character variables. Marker 12 selects this exact-position
+	// return path in Black Market Contact#exit.
+	BM_ReturnMap$ = .@return_map$;
+	BM_ReturnX = .@return_x;
+	BM_ReturnY = .@return_y;
+	BM_ReturnLocation = 12;
+	delitem 6909,1;
+	cutin "prm_3",2;
+	mes "[Premi]";
+	mes "Okay! Stay close!";
+	close2;
+	cutin "",255;
+	warp "paramk",11,171;
+	end;
 
 S_BuffMenu:
 	cutin "prm_2",2;
