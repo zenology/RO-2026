@@ -14,6 +14,11 @@ function	script	F_BlackMarketContact	{
 	if (select("Enter the Black Market.:Not now.") == 2)
 		close;
 
+	// A normal Contact entry supersedes any unconsumed exact-position return
+	// that Premi may have recorded.
+	BM_ReturnMap$ = "";
+	BM_ReturnX = 0;
+	BM_ReturnY = 0;
 	// Permanent character variable: overwritten on every confirmed entry.
 	BM_ReturnLocation = getarg(0);
 	mes "[Black Market Contact]";
@@ -90,6 +95,22 @@ paramk,8,171,4	script	Black Market Contact#exit	4_M_MASKMAN,{
 	mes "Stay close and do not look back.";
 	close2;
 	switch (BM_ReturnLocation) {
+	case 12:
+		if (BM_ReturnMap$ != "" && BM_ReturnX > 0 && BM_ReturnY > 0) {
+			.@return_map$ = BM_ReturnMap$;
+			.@return_x = BM_ReturnX;
+			.@return_y = BM_ReturnY;
+			warp .@return_map$,.@return_x,.@return_y;
+		} else {
+			// A partial Premi record must never send the player to an arbitrary map.
+			warp "prontera",195,53;
+		}
+		// Premi's exact-position record is single-use, even when malformed.
+		BM_ReturnLocation = 0;
+		BM_ReturnMap$ = "";
+		BM_ReturnX = 0;
+		BM_ReturnY = 0;
+		break;
 	case 1:
 		warp "prontera",195,53;
 		break;

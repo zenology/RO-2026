@@ -18,8 +18,24 @@ paramk,41,159,4	script	Black Market Boss#offline	4_M_MANAGER,{
 	mes "I pay in ^0055FFCash Points^000000, not Zeny.";
 	mes "My offer depends on the monster behind each card.";
 	next;
-	switch (select("Sell cards.:Check points and loyalty.:Leave.")) {
+	switch (select("Sell one card type.:Sell every accepted card.:Check points and loyalty.:Leave.")) {
 	case 1:
+		goto L_Single;
+	case 2:
+		goto L_Bulk;
+	case 3:
+		mes "[Black Market Boss]";
+		mes "Your account has ^0055FF" + #CASHPOINTS + " Cash Points^000000.";
+		mes "Normal-card loyalty: ^0055FF" + #CC_Normal + " / 30^000000.";
+		mes "Miniboss-card loyalty: ^0055FF" + #CC_Mini + " / 5^000000.";
+		mes "MVP-card loyalty: ^0055FF" + #CC_MVP + " / 5^000000.";
+		close;
+
+	default:
+		close;
+	}
+
+L_Single:
 		getinventorylist;
 		.@card_count = 0;
 		for (.@i = 0; .@i < @inventorylist_count; ++.@i) {
@@ -234,28 +250,167 @@ paramk,41,159,4	script	Black Market Boss#offline	4_M_MANAGER,{
 		}
 		close;
 
-	case 2:
-		mes "[Black Market Boss]";
-		mes "Your account has ^0055FF" + #CASHPOINTS + " Cash Points^000000.";
-		mes "Normal-card loyalty: ^0055FF" + #CC_Normal + " / 30^000000.";
-		mes "Miniboss-card loyalty: ^0055FF" + #CC_Mini + " / 5^000000.";
-		mes "MVP-card loyalty: ^0055FF" + #CC_MVP + " / 5^000000.";
-		close;
+L_Bulk:
+	getinventorylist;
+	deletearray .@bulk_ids[0], getarraysize(.@bulk_ids);
+	deletearray .@bulk_amounts[0], getarraysize(.@bulk_amounts);
+	deletearray .@bulk_offers[0], getarraysize(.@bulk_offers);
+	deletearray .@bulk_tiers[0], getarraysize(.@bulk_tiers);
+	.@bulk_count = 0;
+	.@bulk_cards = 0;
+	.@bulk_payment = 0;
+	.@bulk_normal = 0;
+	.@bulk_mini = 0;
+	.@bulk_mvp = 0;
+	for (.@i = 0; .@i < @inventorylist_count; ++.@i) {
+		.@item_id = @inventorylist_id[.@i];
+		if (inarray(.@bulk_ids[0], .@item_id) != -1 ||
+			getiteminfo(.@item_id, ITEMINFO_TYPE) != IT_CARD ||
+			getiteminfo(.@item_id, ITEMINFO_SUBTYPE) != CARD_NORMAL)
+			continue;
+		.@offer = callsub(S_GetOffer, .@item_id);
+		.@tier = callsub(S_GetTier, .@item_id);
+		if (.@offer <= 0 || .@tier < 1 || .@tier > 3)
+			continue;
+		.@amount = countitem(.@item_id);
+		if (.@amount < 1)
+			continue;
+		.@bulk_ids[.@bulk_count] = .@item_id;
+		.@bulk_amounts[.@bulk_count] = .@amount;
+		.@bulk_offers[.@bulk_count] = .@offer;
+		.@bulk_tiers[.@bulk_count++] = .@tier;
+		.@bulk_cards += .@amount;
+		.@bulk_payment += .@amount * .@offer;
+		switch (.@tier) {
+		case 1: .@bulk_normal += .@amount; break;
+		case 2: .@bulk_mini += .@amount; break;
+		case 3: .@bulk_mvp += .@amount; break;
+		}
+	}
 
-	default:
+	if (!.@bulk_count) {
+		mes "[Black Market Boss]";
+		mes "Do not waste my time.";
+		mes "You are not carrying any cards I accept.";
+		mes "Cards inserted into equipment don't count.";
 		close;
 	}
+
+	mes "[Black Market Boss]";
+	mes "You are offering every card I accept.";
+	mes "^0055FF" + .@bulk_count + " card types, " + .@bulk_cards + " cards total.^000000";
+	mes "Normal: " + .@bulk_normal + "  Miniboss: " + .@bulk_mini + "  MVP: " + .@bulk_mvp;
+	mes "My offer: ^0055FF" + .@bulk_payment + " Cash Points^000000.";
+	mes "Once they enter my collection, the deal is final.";
+	next;
+	if (select("Sell every accepted card.:Keep everything.") != 1)
+		close;
+
+	.@new_normal = #CC_Normal + .@bulk_normal;
+	.@normal_milestones = .@new_normal / 30;
+	.@normal_remainder = .@new_normal % 30;
+	for (.@i = 0; .@i < .@normal_milestones; ++.@i) {
+		if (rand(100) < 70)
+			.@old_card_albums += 5;
+		else
+			.@dead_branches += 5;
+	}
+	.@new_mini = #CC_Mini + .@bulk_mini;
+	.@mini_milestones = .@new_mini / 5;
+	.@mini_remainder = .@new_mini % 5;
+	for (.@i = 0; .@i < .@mini_milestones; ++.@i) {
+		if (rand(100) < 50)
+			.@magic_card_albums += 1;
+		else
+			.@dead_branches += 10;
+	}
+	.@new_mvp = #CC_MVP + .@bulk_mvp;
+	.@mvp_milestones = .@new_mvp / 5;
+	.@mvp_remainder = .@new_mvp % 5;
+	for (.@i = 0; .@i < .@mvp_milestones; ++.@i) {
+		.@roll = rand(100);
+		if (.@roll < 1)
+			.@mvp_card_albums += 1;
+		else if (.@roll < 41)
+			.@bloody_branches += 2;
+		else if (.@roll < 81)
+			.@empty_bottles += 100;
+		else
+			.@backstabs += 1;
+	}
+
+	.@reward_count = 0;
+	if (.@old_card_albums) { .@reward_ids[.@reward_count] = 616; .@reward_amounts[.@reward_count++] = .@old_card_albums; }
+	if (.@dead_branches) { .@reward_ids[.@reward_count] = 604; .@reward_amounts[.@reward_count++] = .@dead_branches; }
+	if (.@magic_card_albums) { .@reward_ids[.@reward_count] = 12246; .@reward_amounts[.@reward_count++] = .@magic_card_albums; }
+	if (.@mvp_card_albums) { .@reward_ids[.@reward_count] = 35000; .@reward_amounts[.@reward_count++] = .@mvp_card_albums; }
+	if (.@bloody_branches) { .@reward_ids[.@reward_count] = 12103; .@reward_amounts[.@reward_count++] = .@bloody_branches; }
+	if (.@empty_bottles) { .@reward_ids[.@reward_count] = 713; .@reward_amounts[.@reward_count++] = .@empty_bottles; }
+	if (.@reward_count && !checkweight2(.@reward_ids, .@reward_amounts)) {
+		mes "[Black Market Boss]";
+		mes "My payment includes more than your pockets can hold.";
+		mes "Make room, then return to my table.";
+		close;
+	}
+
+	for (.@i = 0; .@i < .@bulk_count; ++.@i) {
+		if (getiteminfo(.@bulk_ids[.@i], ITEMINFO_TYPE) != IT_CARD ||
+			getiteminfo(.@bulk_ids[.@i], ITEMINFO_SUBTYPE) != CARD_NORMAL ||
+			callsub(S_GetOffer, .@bulk_ids[.@i]) != .@bulk_offers[.@i] ||
+			callsub(S_GetTier, .@bulk_ids[.@i]) != .@bulk_tiers[.@i] ||
+			countitem(.@bulk_ids[.@i]) < .@bulk_amounts[.@i]) {
+			mes "[Black Market Boss]";
+			mes "Something changed before the deal was closed.";
+			mes "I do not conduct uncertain business.";
+			close;
+		}
+	}
+	for (.@i = 0; .@i < .@bulk_count; ++.@i)
+		delitem .@bulk_ids[.@i], .@bulk_amounts[.@i];
+	#CASHPOINTS += .@bulk_payment;
+	#CC_Normal = .@normal_remainder;
+	#CC_Mini = .@mini_remainder;
+	#CC_MVP = .@mvp_remainder;
+	for (.@i = 0; .@i < .@reward_count; ++.@i)
+		getitem .@reward_ids[.@i], .@reward_amounts[.@i];
+	logmes "Card Collector: bulk sold " + .@bulk_cards + " cards across " + .@bulk_count + " item IDs for " + .@bulk_payment + " Cash Points; Normal " + .@bulk_normal + " (" + .@normal_milestones + " milestones); Miniboss " + .@bulk_mini + " (" + .@mini_milestones + " milestones); MVP " + .@bulk_mvp + " (" + .@mvp_milestones + " milestones); OCA " + .@old_card_albums + "; DB " + .@dead_branches + "; MCA " + .@magic_card_albums + "; MVP albums " + .@mvp_card_albums + "; BDB " + .@bloody_branches + "; bottles " + .@empty_bottles + "; backstabs " + .@backstabs + "; balance " + #CASHPOINTS;
+
+	mes "[Black Market Boss]";
+	mes "A clean transaction. I expect nothing less.";
+	mes "You received ^0055FF" + .@bulk_payment + " Cash Points^000000.";
+	mes "Current balance: ^0055FF" + #CASHPOINTS + " Cash Points^000000.";
+	if (.@reward_count) {
+		mes "^FF8800Loyalty reward:^000000";
+		if (.@old_card_albums) mes mesitemlink(616, false) + " x" + .@old_card_albums;
+		if (.@dead_branches) mes mesitemlink(604, false) + " x" + .@dead_branches;
+		if (.@magic_card_albums) mes mesitemlink(12246, false) + " x" + .@magic_card_albums;
+		if (.@mvp_card_albums) mes mesitemlink(35000, false) + " x" + .@mvp_card_albums;
+		if (.@bloody_branches) mes mesitemlink(12103, false) + " x" + .@bloody_branches;
+		if (.@empty_bottles) mes mesitemlink(713, false) + " x" + .@empty_bottles;
+	}
+	if (.@backstabs) {
+		mes "...";
+		next;
+		mes "[Black Market Boss]";
+		mes "You sold the wrong card to the wrong man.";
+		mes "A collector should know when not to sell.";
+		next;
+		close2;
+		unitkill getcharid(3);
+		end;
+	}
+	close;
 
 S_GetOffer:
 	.@item_id = getarg(0);
 	.@i = inarray(.Offer10[0], .@item_id);
 	if (.@i != -1)
-		return callsub(S_OfferFromSource, .MvpSources[.@i], 3);
+		return getelementofarray(getvariableofnpc(.CardOffer[0], "mvp_card_seller_creation"), .@i);
 	.@i = inarray(.MinibossCards[0], .@item_id);
 	if (.@i != -1)
-		return callsub(S_OfferFromSource, .MinibossSources[.@i], 2);
+		return getelementofarray(getvariableofnpc(.CardOffer[0], "miniboss_card_seller_creation"), .@i);
 	if (.@item_id == 6716 || .@item_id == 6717 || .@item_id == 6718)
-		return callsub(S_OfferFromSource, 3075, 1);
+		return 300;
 	// Read the Normal catalog at click time. OnInit runs in ev_db hash
 	// order, so copying card_seller_creation during OnInit can happen
 	// before that NPC has filled .CardIds. That left Normal cards such
@@ -265,14 +420,7 @@ S_GetOffer:
 	.@i = inarray(getvariableofnpc(.CardIds[0], "card_seller_creation"), .@item_id);
 	if (.@i == -1)
 		return 0;
-	.@src = getelementofarray(getvariableofnpc(.SourceMobIds[0], "card_seller_creation"), .@i);
-	return callsub(S_OfferFromSource, .@src, 1);
-
-S_OfferFromSource:
-	.@lv = getmonsterinfo(getarg(0), MOB_LV);
-	if (.@lv < 1)
-		return 0;
-	return callfunc("F_OfflineCardCollectorOffer", .@lv, getarg(1));
+	return getelementofarray(getvariableofnpc(.CardOffer[0], "card_seller_creation"), .@i);
 
 S_GetTier:
 	.@item_id = getarg(0);
@@ -355,8 +503,23 @@ paramk,41,157,2	duplicate(Guard#card_collector_1)	Guard#card_collector_2	405,2,1
 
 // Room-entrance guard: same balloon warning pattern, different sprite and lines.
 paramk,14,175,4	script	Guard#black_market_door	686,2,1,{
-	callsub S_Warn;
-	end;
+	mes "[Guard]";
+	mes "This isn't a hallway. State your business.";
+	next;
+	if (select("How are the market rates today?:Never mind.") == 2)
+		close;
+
+	mes "[Guard]";
+	mes "The current adjustment is against each drawer's listed Cash Point price.";
+	mes "Harlan: " + $BlackMarketRateHarlan + "%";
+	mes "Soren: " + $BlackMarketRateSoren + "%";
+	mes "Mordain: " + $BlackMarketRateMordain + "%";
+	mes "Kaedra: " + $BlackMarketRateKaedra + "%";
+	mes "Tess: " + $BlackMarketRateTess + "%";
+	mes "Weaver: " + $BlackMarketRateWeaver + "%";
+	mes "Lady Seraphine: " + $BlackMarketRateSeraphine + "%";
+	mes "Cards (Corvin, Corven, Veynar): " + $BlackMarketRateCards + "%";
+	close;
 
 OnTouch:
 	callsub S_Warn;

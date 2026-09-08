@@ -1,0 +1,78 @@
+//===== Ragnarok Offline =====================================
+//= Black-Market Daily Rates
+//============================================================
+
+function	script	F_BlackMarketDailyRateBand	{
+	.@rate = getarg(0);
+	if (.@rate < 0) return 0;
+	if (.@rate == 0) return 1;
+	if (.@rate <= 10) return 2;
+	if (.@rate <= 20) return 3;
+	return 4;
+}
+
+function	script	F_BlackMarketDailyRemark	{
+	.@seller$ = getarg(0);
+	.@band = callfunc("F_BlackMarketDailyRateBand", getarg(1));
+	mes "[" + .@seller$ + "]";
+	if (.@band == 1) {
+		mes "The ledger is steady tonight. Ordinary terms.";
+		return;
+	}
+	if (.@seller$ == "Harlan") {
+		if (.@band == 0) mes "The ledger is feeling generous. Choose something that suits you.";
+		else if (.@band == 2) mes "The ledger has developed a small taste for quality.";
+		else if (.@band == 3) mes "The ledger is being fussy tonight. So am I.";
+		else mes "The ledger has become intolerably proud. Make your choice wisely.";
+	} else if (.@seller$ == "Soren") {
+		if (.@band == 0) mes "A favorable manifest came in. Do not waste the wind.";
+		else if (.@band == 2) mes "The ports are charging a little more than usual.";
+		else if (.@band == 3) mes "The routes are costly tonight. The steel remains worth it.";
+		else mes "Every captain wants his cut tonight. Pick a weapon you mean to use.";
+	} else if (.@seller$ == "Mordain") {
+		if (.@band == 0) mes "The armorers are unusually merciful tonight.";
+		else if (.@band == 2) mes "The smiths have raised an eyebrow at the ledger.";
+		else if (.@band == 3) mes "Good armor is demanding a premium tonight.";
+		else mes "Even steel has learned vanity tonight.";
+	} else if (.@seller$ == "Kaedra") {
+		if (.@band == 0) mes "The shield line is kinder than usual. Take advantage.";
+		else if (.@band == 2) mes "The shield line is a little tight tonight.";
+		else if (.@band == 3) mes "Protection is expensive tonight. It usually is.";
+		else mes "The shield line is bleeding us dry. Choose carefully.";
+	} else if (.@seller$ == "Tess") {
+		if (.@band == 0) mes "Leather and soles are moving kindly tonight.";
+		else if (.@band == 2) mes "The cobblers are asking a little more for their work.";
+		else if (.@band == 3) mes "Good footing is dear tonight. Better than falling.";
+		else mes "Even boots have become proud tonight. Mind your step.";
+	} else if (.@seller$ == "Weaver") {
+		if (.@band == 0) mes "The cloth market has loosened its grip tonight.";
+		else if (.@band == 2) mes "Fine thread is tugging at the ledger tonight.";
+		else if (.@band == 3) mes "The cloth market is in a demanding mood.";
+		else mes "Every stitch has found an attitude tonight.";
+	} else if (.@seller$ == "Lady Seraphine Vellmont") {
+		if (.@band == 0) mes "How delightful. Even the ledger has discovered generosity.";
+		else if (.@band == 2) mes "Taste has become just a little more expensive tonight.";
+		else if (.@band == 3) mes "Darling, excellence is in a demanding mood tonight.";
+		else mes "Beauty has become ruinously exclusive tonight. Naturally.";
+	} else {
+		if (.@band == 0) mes "The card table is dealing kindly tonight.";
+		else if (.@band == 2) mes "The card table wants a little more tonight.";
+		else if (.@band == 3) mes "The card table is being demanding tonight.";
+		else mes "The card table is ravenous tonight. Do not blink.";
+	}
+	return;
+}
+
+-	script	black_market_daily_rate	-1,{
+OnInit:
+OnClock0000:
+	$BlackMarketRateHarlan = rand(-10,30);
+	$BlackMarketRateSoren = rand(-10,30);
+	$BlackMarketRateMordain = rand(-10,30);
+	$BlackMarketRateKaedra = rand(-10,30);
+	$BlackMarketRateTess = rand(-10,30);
+	$BlackMarketRateWeaver = rand(-10,30);
+	$BlackMarketRateSeraphine = rand(-10,30);
+	$BlackMarketRateCards = rand(-10,30);
+	end;
+}

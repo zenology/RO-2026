@@ -9,3 +9,5 @@
  **/
 
 //BUILDIN_DEF(example,""),
+BUILDIN_DEF(callblackmarketshop,"sii"),
+BUILDIN_DEF(blackmarketenhance,"isrrr"),
