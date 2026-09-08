@@ -1232,7 +1232,11 @@ Body:
       bonus bMatk,250;
       bonus bHPGainValue,777;
       bonus bSPGainValue,77;
-      skill "MC_GREED",1;
+      bonus bLongHPGainValue,777;
+      bonus bLongSPGainValue,77;
+      bonus bMagicHPGainValue,777;
+      bonus bMagicSPGainValue,77;
+      skill "BS_GREED",1;
       bonus2 bExpAddRace,RC_All,20;
       bonus2 bDropAddRace,RC_All,20;
 
@@ -1259,4 +1263,3 @@ Body:
       skill "WZ_ESTIMATION",1;
       bonus2 bDropAddRace,RC_All,25;
       bonus2 bExpAddRace,RC_All,25;
-
