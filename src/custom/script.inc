@@ -20,6 +20,112 @@
 
 #include "black_market_cashshop.hpp"
 
+// Result codes: 1=success, 2=selected item changed, 3=insufficient Cash Points,
+// 4=invalid generated/script data. The NPC owns the roll; this command owns the
+// atomic validation, account-point debit, mutation, client refresh, and re-equip.
+BUILDIN_FUNC(blackmarketenhance)
+{
+	TBL_PC* sd = nullptr;
+	if (!script_rid2sd(sd)) {
+		script_pushint(st, 4);
+		return SCRIPT_CMD_FAILURE;
+	}
+
+	const int32 slot = script_getnum(st, 2);
+	if (slot != EQI_HEAD_TOP && slot != EQI_HEAD_MID && slot != EQI_HEAD_LOW &&
+		slot != EQI_ARMOR && slot != EQI_HAND_L && slot != EQI_HAND_R &&
+		slot != EQI_GARMENT && slot != EQI_SHOES && slot != EQI_ACC_L && slot != EQI_ACC_R) {
+		script_pushint(st, 4);
+		return SCRIPT_CMD_SUCCESS;
+	}
+
+	char* end = nullptr;
+	const uint64 expected_unique_id = std::strtoull(script_getstr(st, 3), &end, 10);
+	if (end == script_getstr(st, 3) || *end != '\0') {
+		script_pushint(st, 4);
+		return SCRIPT_CMD_SUCCESS;
+	}
+
+	struct item replacement{};
+	if (!script_getitem_randomoption(st, sd, &replacement, "blackmarketenhance", 4)) {
+		script_pushint(st, 4);
+		return SCRIPT_CMD_SUCCESS;
+	}
+
+	for (int32 argument = 4; argument <= 6; ++argument) {
+		struct script_data* data = script_getdata(st, argument);
+		const char* name = reference_getname(data);
+		if (!data_isreference(data) || !script_array_src(st, sd, name, reference_getref(data)) ||
+			script_array_highest_key(st, sd, name, reference_getref(data)) > MAX_ITEM_RDM_OPT) {
+			ShowError("buildin_blackmarketenhance: option arrays contain data beyond slot %d.\n", MAX_ITEM_RDM_OPT - 1);
+			script_pushint(st, 4);
+			return SCRIPT_CMD_SUCCESS;
+		}
+	}
+
+	for (int32 option_index = 0; option_index < MAX_ITEM_RDM_OPT; ++option_index) {
+		const auto& option = replacement.option[option_index];
+		if (option.id == 0) {
+			if (option.value != 0 || option.param != 0) {
+				script_pushint(st, 4);
+				return SCRIPT_CMD_SUCCESS;
+			}
+			continue;
+		}
+		if (random_option_db.find(static_cast<uint16>(option.id)) == nullptr) {
+			ShowError("buildin_blackmarketenhance: random option ID %d does not exist.\n", option.id);
+			script_pushint(st, 4);
+			return SCRIPT_CMD_SUCCESS;
+		}
+		for (int32 prior = 0; prior < option_index; ++prior) {
+			if (replacement.option[prior].id == option.id) {
+				ShowError("buildin_blackmarketenhance: duplicate random option ID %d.\n", option.id);
+				script_pushint(st, 4);
+				return SCRIPT_CMD_SUCCESS;
+			}
+		}
+	}
+
+	const int16 inventory_index = pc_checkequip(sd, equip_bitmask[slot]);
+	if (inventory_index < 0 || !sd->inventory_data[inventory_index] ||
+		sd->inventory.u.items_inventory[inventory_index].unique_id != expected_unique_id) {
+		script_pushint(st, 2);
+		return SCRIPT_CMD_SUCCESS;
+	}
+	const item_data* item_data = sd->inventory_data[inventory_index];
+	if (item_data->type != IT_WEAPON && item_data->type != IT_ARMOR) {
+		script_pushint(st, 4);
+		return SCRIPT_CMD_SUCCESS;
+	}
+	if ((item_data->type == IT_WEAPON && slot != EQI_HAND_R && slot != EQI_HAND_L) ||
+		(item_data->type == IT_ARMOR && slot == EQI_HAND_R)) {
+		script_pushint(st, 4);
+		return SCRIPT_CMD_SUCCESS;
+	}
+
+	bool has_option = false;
+	for (const auto& option : sd->inventory.u.items_inventory[inventory_index].option)
+		has_option = has_option || option.id != 0;
+	const int32 price = has_option ? 2000 : 1000;
+	if (sd->cashPoints < price || pc_paycash(sd, price, 0, LOG_TYPE_SCRIPT) < 0) {
+		script_pushint(st, 3);
+		return SCRIPT_CMD_SUCCESS;
+	}
+
+	const uint32 equip_mask = sd->inventory.u.items_inventory[inventory_index].equip;
+	log_pick_pc(sd, LOG_TYPE_SCRIPT, -1, &sd->inventory.u.items_inventory[inventory_index]);
+	pc_unequipitem(sd, inventory_index, 2);
+	for (int32 option_index = 0; option_index < MAX_ITEM_RDM_OPT; ++option_index)
+		sd->inventory.u.items_inventory[inventory_index].option[option_index] = replacement.option[option_index];
+	clif_delitem(*sd, inventory_index, 1, 3);
+	log_pick_pc(sd, LOG_TYPE_SCRIPT, -1, &sd->inventory.u.items_inventory[inventory_index]);
+	clif_additem(sd, inventory_index, 1, 0);
+	if (!pc_equipitem(sd, inventory_index, equip_mask))
+		ShowWarning("buildin_blackmarketenhance: changed item %u could not be re-equipped (CID=%d/AID=%d).\n", sd->inventory.u.items_inventory[inventory_index].nameid, sd->status.char_id, sd->status.account_id);
+	script_pushint(st, 1);
+	return SCRIPT_CMD_SUCCESS;
+}
+
 BUILDIN_FUNC(callblackmarketshop)
 {
 	const char *shopname = script_getstr(st, 2);
