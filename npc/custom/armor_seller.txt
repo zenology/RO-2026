@@ -1,13 +1,13 @@
 //===== Ragnarok Offline =====================================
 //= Black-Market Armor Seller
-//= Mordain offers body armor in Equipment and Specialty catalogs.
-//= Browse each catalog by 0-9 or A-Z using stripped client display names only.
+//= Mordain offers body armor in Equipment catalogs.
+//= Browse by 0-9 or A-Z using stripped client display names only.
 //============================================================
 
 paramk,37,163,2	script	Mordain#offline	4_EP21_GALAXIA_A,{
 	mes "[Mordain]";
 	mes "Body armor, sorted for the discerning knight.";
-	.@cat = select("Equipment:Specialty:") - 1;
+	.@cat = select("Equipment:") - 1;
 	.@letter = -1;
 	.@shop$ = "";
 	if (.@cat == 0) {
@@ -34,19 +34,6 @@ paramk,37,163,2	script	Mordain#offline	4_EP21_GALAXIA_A,{
 		if (.@letter == 19) .@shop$ = "arm0#V";
 		if (.@letter == 20) .@shop$ = "arm0#W";
 		if (.@letter == 21) .@shop$ = "arm0#Y";
-	}
-	if (.@cat == 1) {
-		.@letter = select("Automatic Equipment:Faint Star to Nebula Equipment:Grace Equipment:Gray Wolf Equipment:Illusion Equipment:Imperial Equipment:Noblesse Equipment:Supplement Part Equipment:Upgrade Part Equipment:Mora Equipment:") - 1;
-		if (.@letter == 0) .@shop$ = "arm1#Automatic Equipment";
-		if (.@letter == 1) .@shop$ = "arm1#Faint Star to Nebula Equipment";
-		if (.@letter == 2) .@shop$ = "arm1#Grace Equipment";
-		if (.@letter == 3) .@shop$ = "arm1#Gray Wolf Equipment";
-		if (.@letter == 4) .@shop$ = "arm1#Illusion Equipment";
-		if (.@letter == 5) .@shop$ = "arm1#Imperial Equipment";
-		if (.@letter == 6) .@shop$ = "arm1#Noblesse Equipment";
-		if (.@letter == 7) .@shop$ = "arm1#Supplement Part Equipment";
-		if (.@letter == 8) .@shop$ = "arm1#Upgrade Part Equipment";
-if (.@letter == 9) .@shop$ = "arm1#Mora Equipment";
 	}
 	if (.@shop$ == "") { close; }
 	callfunc "F_BlackMarketDailyRemark", "Mordain", $BlackMarketRateMordain;
@@ -82,13 +69,3 @@ OnInit:
 -	pointshop	arm0#V	-1,#CASHPOINTS,2357:8100,450202:4580,450200:5780,450201:2980,450203:5780,450199:975,15365:2400,15176:360
 -	pointshop	arm0#W	-1,#CASHPOINTS,2379:2700,15407:5400,15419:1300,450419:7800
 -	pointshop	arm0#Y	-1,#CASHPOINTS,15212:2100
--	pointshop	arm1#Automatic Equipment	-1,#CASHPOINTS,450127:4050,450128:5400
--	pointshop	arm1#Faint Star to Nebula Equipment	-1,#CASHPOINTS,450169:9380,450170:5380,450173:8380,450174:5380,450171:7380,450172:9380
--	pointshop	arm1#Grace Equipment	-1,#CASHPOINTS,450291:7800,450094:2900,450091:4350,450103:4650,450086:5400,450100:5800,450101:4050,450107:5600,450110:5600,450095:4650,450113:5600,450118:2900,450119:2900,450104:4050,450109:3100,450111:5600,450089:2900,450087:4650,450096:2700,450117:3100,450115:2900,450116:5600,450309:9600,450106:5800,450112:5600,450093:2900,450102:4350,450092:5800,450090:4350,450088:4350,450105:4200,450114:4350,450126:4050,450125:4050,450097:2700,450098:4050,450108:3100,450099:4350
--	pointshop	arm1#Gray Wolf Equipment	-1,#CASHPOINTS,450178:5400,450177:4050
--	pointshop	arm1#Illusion Equipment	-1,#CASHPOINTS,450146:4650,15348:2700,15195:5400,450144:3900,450145:3000,450182:5400
--	pointshop	arm1#Imperial Equipment	-1,#CASHPOINTS,450060:2900,450057:4350,450069:4650,450052:5400,450066:5800,450067:4050,450073:5600,450076:5600,450061:4650,450079:5600,450084:2900,450085:2900,450070:4050,450075:3100,450077:5600,450055:2900,450053:4650,450062:2700,450083:3100,450081:2900,450082:5600,450072:5800,450078:5600,450059:2900,450068:4350,450058:5800,450056:4350,450054:4350,450071:4200,450080:4350,450124:4050,450123:4050,450063:2700,450064:4050,450074:3100,450065:4350
--	pointshop	arm1#Noblesse Equipment	-1,#CASHPOINTS,450026:2900,450023:4350,450033:4650,450018:5400,450030:5800,450031:4050,450037:5600,450040:5600,450027:4650,450043:5600,450048:2900,450049:2900,450034:4050,450039:3100,450041:5600,450021:2900,450019:4650,450050:2700,450047:3100,450045:2900,450046:5600,450036:5800,450042:5600,450025:2900,450032:4350,450024:5800,450022:4350,450020:4350,450035:4200,450044:4350,450122:4050,450121:4050,450051:2700,450028:4050,450038:3100,450029:4350
--	pointshop	arm1#Supplement Part Equipment	-1,#CASHPOINTS,15110:2400,15343:3375
--	pointshop	arm1#Upgrade Part Equipment	-1,#CASHPOINTS,15015:2500,15016:2500,15021:2500,15020:2500,15344:9000,15111:3240,15017:2500,15019:2500,15018:2500
--	pointshop	arm1#Mora Equipment	-1,#CASHPOINTS,15024:1650,15025:2380,15026:2380,15027:2380,15028:2380,15029:2400,15030:4200,15036:4200,15037:2400,15038:3240,15039:540,15042:2900,15043:2700

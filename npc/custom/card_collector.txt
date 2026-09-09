@@ -535,6 +535,7 @@ paramk,14,175,4	script	Guard#black_market_door	686,2,1,{
 	mes "Tess: " + $BlackMarketRateTess + "%";
 	mes "Weaver: " + $BlackMarketRateWeaver + "%";
 	mes "Lady Seraphine: " + $BlackMarketRateSeraphine + "%";
+mes "Madame Celestine: " + $BlackMarketRateSpecialty + "%";
 	mes "Cards (Corvin, Corven, Veynar): " + $BlackMarketRateCards + "%";
 	close;
 

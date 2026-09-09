@@ -8,7 +8,7 @@ paramk,24,160,4	script	Weaver#offline	4_ED_OSCAR,{
 	mes "[Madame Mireille]";
 	mes "They dragged me here for my hands, not my company.";
 	mes "Since I am already trapped, I may as well cut you a proper cloak. Pick what you need.";
-	.@cat = select("Equipment:Specialty:") - 1;
+	.@cat = select("Equipment:") - 1;
 	.@shop$ = "";
 	if (.@cat == 0) {
 		.@letter = select("A:B:C:D:E:F:G:H:I:J:K:L:M:N:O:P:R:S:T:U:V:W:Y") - 1;
@@ -35,16 +35,6 @@ paramk,24,160,4	script	Weaver#offline	4_ED_OSCAR,{
 		if (.@letter == 20) .@shop$ = "gar0#V";
 		if (.@letter == 21) .@shop$ = "gar0#W";
 		if (.@letter == 22) .@shop$ = "gar0#Y";
-	}
-	if (.@cat == 1) {
-		.@family = select("Automatic Equipment:Grace Equipment:Gray Wolf Equipment:Illusion Equipment:Imperial Equipment:Noblesse Equipment:Mora Equipment") - 1;
-		if (.@family == 0) .@shop$ = "gar1#Automatic Equipment";
-		if (.@family == 1) .@shop$ = "gar1#Grace Equipment";
-		if (.@family == 2) .@shop$ = "gar1#Gray Wolf Equipment";
-		if (.@family == 3) .@shop$ = "gar1#Illusion Equipment";
-		if (.@family == 4) .@shop$ = "gar1#Imperial Equipment";
-		if (.@family == 5) .@shop$ = "gar1#Noblesse Equipment";
-if (.@family == 6) .@shop$ = "gar1#Mora Equipment";
 	}
 	if (.@shop$ == "") close;
 	callfunc "F_BlackMarketDailyRemark", "Weaver", $BlackMarketRateWeaver;
@@ -81,10 +71,3 @@ OnInit:
 -	pointshop	gar0#V	-1,#CASHPOINTS,2517:1500,20712:1950,480188:3000,2524:4500,480147:4580,480146:5380,480145:2980,480148:5780,480144:975,20940:4200
 -	pointshop	gar0#W	-1,#CASHPOINTS,20814:1800,20834:975,20728:1600,480607:10200,480543:5400,480536:5000,20729:1600,480242:4400,20812:975,480604:3450,480070:3800,480471:7780,480696:1950
 -	pointshop	gar0#Y	-1,#CASHPOINTS,20816:8100,20856:2960
--	pointshop	gar1#Automatic Equipment	-1,#CASHPOINTS,480020:4050,480021:5400
--	pointshop	gar1#Grace Equipment	-1,#CASHPOINTS,480018:5400,480019:5600
--	pointshop	gar1#Gray Wolf Equipment	-1,#CASHPOINTS,480091:4050,480090:5400
--	pointshop	gar1#Illusion Equipment	-1,#CASHPOINTS,20840:540,20923:3100,480054:4300,20838:2700
--	pointshop	gar1#Imperial Equipment	-1,#CASHPOINTS,480016:5400,480017:5600
--	pointshop	gar1#Noblesse Equipment	-1,#CASHPOINTS,480012:5400,480014:5600
--	pointshop	gar1#Mora Equipment	-1,#CASHPOINTS,2568:680,2569:3600,2570:2880,2574:2700,2575:3600,2577:2800,2578:2400,2580:2880,2581:3600

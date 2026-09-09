@@ -9,7 +9,7 @@ paramk,23,185,4	script	Tess#offline	4_4JOB_MAURA,{
 	mes "Everyone expected me to learn his trade. I never wanted to spend my life counting cards behind his table.";
 	mes "So I chose leather, thread, and a proper sole. I make shoes, repair them, and send people back onto the road.";
 	mes "If you want something for your feet, speak to me. If you want a card appraised, ask my father.";
-	.@cat = select("Equipment:Specialty:") - 1;
+	.@cat = select("Equipment:") - 1;
 	.@shop$ = "";
 	if (.@cat == 0) {
 		.@key = select("A:B:C:D:E:F:G:H:I:J:L:M:N:P:R:S:T:U:V:W:Y:") - 1;
@@ -34,16 +34,6 @@ paramk,23,185,4	script	Tess#offline	4_4JOB_MAURA,{
 		if (.@key == 18) .@shop$ = "ftr0#V";
 		if (.@key == 19) .@shop$ = "ftr0#W";
 		if (.@key == 20) .@shop$ = "ftr0#Y";
-	}
-	if (.@cat == 1) {
-		.@key = select("Automatic Equipment:Grace Equipment:Gray Wolf Equipment:Illusion Equipment:Imperial Equipment:Noblesse Equipment:Mora Equipment:") - 1;
-		if (.@key == 0) .@shop$ = "ftr1#Automatic Equipment";
-		if (.@key == 1) .@shop$ = "ftr1#Grace Equipment";
-		if (.@key == 2) .@shop$ = "ftr1#Gray Wolf Equipment";
-		if (.@key == 3) .@shop$ = "ftr1#Illusion Equipment";
-		if (.@key == 4) .@shop$ = "ftr1#Imperial Equipment";
-		if (.@key == 5) .@shop$ = "ftr1#Noblesse Equipment";
-if (.@key == 6) .@shop$ = "ftr1#Mora Equipment";
 	}
 	if (.@shop$ == "") close;
 	callfunc "F_BlackMarketDailyRemark", "Tess", $BlackMarketRateTess;
@@ -78,10 +68,3 @@ OnInit:
 -	pointshop	ftr0#V	-1,#CASHPOINTS,2421:4500,2431:1000,2423:3000,470110:4380,470109:4580,470108:2980,470111:5380,470107:975,2450:1200
 -	pointshop	ftr0#W	-1,#CASHPOINTS,470457:4600
 -	pointshop	ftr0#Y	-1,#CASHPOINTS,22141:2820
--	pointshop	ftr1#Automatic Equipment	-1,#CASHPOINTS,470022:2900,470023:2800
--	pointshop	ftr1#Grace Equipment	-1,#CASHPOINTS,470020:5800,470021:5600
--	pointshop	ftr1#Gray Wolf Equipment	-1,#CASHPOINTS,470087:2900,470088:2800
--	pointshop	ftr1#Illusion Equipment	-1,#CASHPOINTS,22190:4050,22192:5800,22133:2700,470066:3480
--	pointshop	ftr1#Imperial Equipment	-1,#CASHPOINTS,470018:5800,470019:5600
--	pointshop	ftr1#Noblesse Equipment	-1,#CASHPOINTS,470016:5800,470017:5600
--	pointshop	ftr1#Mora Equipment	-1,#CASHPOINTS,2467:2700,2468:2700,2469:2700,2470:2700,2471:9600,2472:3000,2475:2700,2476:2700,2477:2700,2478:2700,2479:540,2480:2700
