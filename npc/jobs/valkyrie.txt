@@ -334,7 +334,9 @@ yuno_in02,93,207,1	script	Book of Ymir	111,{
 			mes "Let the heroes live new lives";
 			mes "so they can protect the world";
 			mes "from danger. And then...";
-			close;
+			close2;
+			warp "valkyrie",48,8;
+			end;
 		}
 		mes "[The Book of Ymir]";
 		mes "...";
