@@ -281,23 +281,22 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 	if (.@type == 9) {
 		.@cat = select("Equipment:Specialty:") - 1;
 		if (.@cat == 0) {
-			.@letter = select("B:C:E:F:G:L:M:N:P:Q:R:S:V:") - 1;
+			.@letter = select("B:C:E:F:G:L:N:P:Q:R:S:V:") - 1;
 			if (.@letter == 0) .@shop$ = "wep9_0#B";
 			else if (.@letter == 1) .@shop$ = "wep9_0#C";
 			else if (.@letter == 2) .@shop$ = "wep9_0#E";
 			else if (.@letter == 3) .@shop$ = "wep9_0#F";
 			else if (.@letter == 4) .@shop$ = "wep9_0#G";
 			else if (.@letter == 5) .@shop$ = "wep9_0#L";
-			else if (.@letter == 6) .@shop$ = "wep9_0#M";
-			else if (.@letter == 7) .@shop$ = "wep9_0#N";
-			else if (.@letter == 8) .@shop$ = "wep9_0#P";
-			else if (.@letter == 9) .@shop$ = "wep9_0#Q";
-			else if (.@letter == 10) .@shop$ = "wep9_0#R";
-			else if (.@letter == 11) .@shop$ = "wep9_0#S";
-			else if (.@letter == 12) .@shop$ = "wep9_0#V";
+						else if (.@letter == 6) .@shop$ = "wep9_0#N";
+			else if (.@letter == 7) .@shop$ = "wep9_0#P";
+			else if (.@letter == 8) .@shop$ = "wep9_0#Q";
+			else if (.@letter == 9) .@shop$ = "wep9_0#R";
+			else if (.@letter == 10) .@shop$ = "wep9_0#S";
+			else if (.@letter == 11) .@shop$ = "wep9_0#V";
 		}
 		if (.@cat == 1) {
-			.@letter = select("Adulter Fides:Dim Glacier:Dimensions:Edda Biolab:Frontier:Glacier:Illusion:OS Weapons:Poenitentia:Vivatus Fides:") - 1;
+			.@letter = select("Adulter Fides:Dim Glacier:Dimensions:Edda Biolab:Frontier:Glacier:Illusion:OS Weapons:Poenitentia:Vivatus Fides:Mora Equipment:") - 1;
 			if (.@letter == 0) .@shop$ = "wep9_1#S0";
 			else if (.@letter == 1) .@shop$ = "wep9_1#S1";
 			else if (.@letter == 2) .@shop$ = "wep9_1#S2";
@@ -308,6 +307,7 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 			else if (.@letter == 7) .@shop$ = "wep9_1#S7";
 			else if (.@letter == 8) .@shop$ = "wep9_1#S8";
 			else if (.@letter == 9) .@shop$ = "wep9_1#S9";
+else if (.@letter == 10) .@shop$ = "wep9_1#S10";
 		}
 	}
 	if (.@type == 10) {
@@ -474,7 +474,7 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 			else if (.@letter == 13) .@shop$ = "wep16_0#W";
 		}
 		if (.@cat == 1) {
-			.@letter = select("Adulter Fides:Dim Glacier:Dimensions:Edda Biolab:Frontier:Glacier:Illusion:OS Weapons:Poenitentia:Time Gap:Vivatus Fides:") - 1;
+			.@letter = select("Adulter Fides:Dim Glacier:Dimensions:Edda Biolab:Frontier:Glacier:Illusion:OS Weapons:Poenitentia:Time Gap:Vivatus Fides:Mora Equipment:") - 1;
 			if (.@letter == 0) .@shop$ = "wep16_1#S0";
 			else if (.@letter == 1) .@shop$ = "wep16_1#S1";
 			else if (.@letter == 2) .@shop$ = "wep16_1#S2";
@@ -486,6 +486,7 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 			else if (.@letter == 8) .@shop$ = "wep16_1#S8";
 			else if (.@letter == 9) .@shop$ = "wep16_1#S9";
 			else if (.@letter == 10) .@shop$ = "wep16_1#S10";
+else if (.@letter == 11) .@shop$ = "wep16_1#S11";
 		}
 	}
 	if (.@type == 17) {
@@ -565,7 +566,7 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 			else if (.@letter == 12) .@shop$ = "wep19_0#W";
 		}
 		if (.@cat == 1) {
-			.@letter = select("Adulter Fides:Dim Glacier:Dimensions:Edda Biolab:Frontier:Glacier:Illusion:Poenitentia:Time Gap:Vivatus Fides:") - 1;
+			.@letter = select("Adulter Fides:Dim Glacier:Dimensions:Edda Biolab:Frontier:Glacier:Illusion:Poenitentia:Time Gap:Vivatus Fides:Mora Equipment:") - 1;
 			if (.@letter == 0) .@shop$ = "wep19_1#S0";
 			else if (.@letter == 1) .@shop$ = "wep19_1#S1";
 			else if (.@letter == 2) .@shop$ = "wep19_1#S2";
@@ -576,6 +577,7 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 			else if (.@letter == 7) .@shop$ = "wep19_1#S7";
 			else if (.@letter == 8) .@shop$ = "wep19_1#S8";
 			else if (.@letter == 9) .@shop$ = "wep19_1#S9";
+else if (.@letter == 10) .@shop$ = "wep19_1#S10";
 		}
 	}
 	if (.@type == 20) {
@@ -824,7 +826,7 @@ OnInit:
 -	pointshop	wep9_0#F	-1,#CASHPOINTS,590087:14780
 -	pointshop	wep9_0#G	-1,#CASHPOINTS,1524:4500,1528:3000
 -	pointshop	wep9_0#L	-1,#CASHPOINTS,1525:3600,1544:2655
--	pointshop	wep9_0#M	-1,#CASHPOINTS,16018:5700
+
 -	pointshop	wep9_0#N	-1,#CASHPOINTS,1541:1560,16022:2040,16029:2250
 -	pointshop	wep9_0#P	-1,#CASHPOINTS,16031:3000,590045:8535
 -	pointshop	wep9_0#Q	-1,#CASHPOINTS,1527:5400,16024:6600
@@ -944,7 +946,7 @@ OnInit:
 -	pointshop	wep16_0#S	-1,#CASHPOINTS,1672:3000,550088:11980,550093:10780,550094:10780,1648:3000,1668:2400
 -	pointshop	wep16_0#T	-1,#CASHPOINTS,26173:2400,1636:4800
 -	pointshop	wep16_0#V	-1,#CASHPOINTS,1600:1300
--	pointshop	wep16_0#W	-1,#CASHPOINTS,1660:4500,1614:200,1616:2400
+-	pointshop	wep16_0#W	-1,#CASHPOINTS,1614:200,1616:2400
 -	pointshop	wep16_1#S0	-1,#CASHPOINTS,550026:4900,550028:5000,550027:4700,550025:10600,550024:4900
 -	pointshop	wep16_1#S1	-1,#CASHPOINTS,550090:1620,550089:1620
 -	pointshop	wep16_1#S2	-1,#CASHPOINTS,550133:13980,550130:16380,550132:13580,550131:13580,550134:10780,550135:9980
@@ -996,12 +998,12 @@ OnInit:
 -	pointshop	wep18_1#S5	-1,#CASHPOINTS,630009:13180
 -	pointshop	wep18_1#S6	-1,#CASHPOINTS,630049:10780
 -	pointshop	wep18_1#S7	-1,#CASHPOINTS,630013:11380
--	pointshop	wep19_0#A	-1,#CASHPOINTS,2012:8100
+
 -	pointshop	wep19_0#B	-1,#CASHPOINTS,2049:7800
--	pointshop	wep19_0#C	-1,#CASHPOINTS,2025:1600,2013:8100
+-	pointshop	wep19_0#C	-1,#CASHPOINTS,2025:1600
 -	pointshop	wep19_0#D	-1,#CASHPOINTS,2005:4500,640037:10780,640036:11180,2001:480
--	pointshop	wep19_0#F	-1,#CASHPOINTS,2014:8100,640053:19180
--	pointshop	wep19_0#G	-1,#CASHPOINTS,2011:6300
+-	pointshop	wep19_0#F	-1,#CASHPOINTS,640053:19180
+
 -	pointshop	wep19_0#H	-1,#CASHPOINTS,26138:1600
 -	pointshop	wep19_0#I	-1,#CASHPOINTS,26139:1600
 -	pointshop	wep19_0#K	-1,#CASHPOINTS,2004:1680
@@ -1064,3 +1066,6 @@ OnInit:
 -	pointshop	wep21_1#S7	-1,#CASHPOINTS,580013:13180
 -	pointshop	wep21_1#S8	-1,#CASHPOINTS,580075:9980
 -	pointshop	wep21_1#S9	-1,#CASHPOINTS,580019:11380,580020:10980
+-	pointshop	wep19_1#S10	-1,#CASHPOINTS,2007:680,2008:800,2009:800,2010:800,2011:660,2012:780,2013:780,2014:780
+-	pointshop	wep16_1#S11	-1,#CASHPOINTS,1657:3360,1660:3240
+-	pointshop	wep9_1#S10	-1,#CASHPOINTS,16013:3840,16018:3720

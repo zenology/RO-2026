@@ -36,7 +36,7 @@ paramk,37,163,2	script	Mordain#offline	4_EP21_GALAXIA_A,{
 		if (.@letter == 21) .@shop$ = "arm0#Y";
 	}
 	if (.@cat == 1) {
-		.@letter = select("Automatic Equipment:Faint Star to Nebula Equipment:Grace Equipment:Gray Wolf Equipment:Illusion Equipment:Imperial Equipment:Noblesse Equipment:Supplement Part Equipment:Upgrade Part Equipment:") - 1;
+		.@letter = select("Automatic Equipment:Faint Star to Nebula Equipment:Grace Equipment:Gray Wolf Equipment:Illusion Equipment:Imperial Equipment:Noblesse Equipment:Supplement Part Equipment:Upgrade Part Equipment:Mora Equipment:") - 1;
 		if (.@letter == 0) .@shop$ = "arm1#Automatic Equipment";
 		if (.@letter == 1) .@shop$ = "arm1#Faint Star to Nebula Equipment";
 		if (.@letter == 2) .@shop$ = "arm1#Grace Equipment";
@@ -46,6 +46,7 @@ paramk,37,163,2	script	Mordain#offline	4_EP21_GALAXIA_A,{
 		if (.@letter == 6) .@shop$ = "arm1#Noblesse Equipment";
 		if (.@letter == 7) .@shop$ = "arm1#Supplement Part Equipment";
 		if (.@letter == 8) .@shop$ = "arm1#Upgrade Part Equipment";
+if (.@letter == 9) .@shop$ = "arm1#Mora Equipment";
 	}
 	if (.@shop$ == "") { close; }
 	callfunc "F_BlackMarketDailyRemark", "Mordain", $BlackMarketRateMordain;
@@ -58,7 +59,7 @@ OnInit:
 	end;
 }
 
--	pointshop	arm0#A	-1,#CASHPOINTS,15061:540,15138:1500,450164:1500,15163:2100,15065:1000,15141:1500,2355:2250,450149:2850,15073:1500,15362:2880,15099:1400,15024:100,2378:2700,450251:3000,2376:2700,15367:3600
+-	pointshop	arm0#A	-1,#CASHPOINTS,15061:540,15138:1500,450164:1500,15163:2100,15065:1000,15141:1500,2355:2250,450149:2850,15073:1500,15362:2880,15099:1400,2378:2700,450251:3000,2376:2700,15367:3600
 	pointshop	arm0#A	-1,#CASHPOINTS,15061:540,15138:1500,450164:1500,15163:2100,15065:1000,15141:1500,2355:2250,450149:2850,15073:1500,15362:2880,15099:1400,15024:100,2378:2700,450251:3000,2376:2700,15367:3600
 -	pointshop	arm0#B	-1,#CASHPOINTS,15432:480,15051:2700,15052:380,2356:1900,450135:2300,15409:4200,15395:4600,15000:4440,450404:11250,2383:1200
 -	pointshop	arm0#C	-1,#CASHPOINTS,450272:12180,450220:6750,2350:3000,15164:420,450281:8980,450180:3300
@@ -90,3 +91,4 @@ OnInit:
 -	pointshop	arm1#Noblesse Equipment	-1,#CASHPOINTS,450026:2900,450023:4350,450033:4650,450018:5400,450030:5800,450031:4050,450037:5600,450040:5600,450027:4650,450043:5600,450048:2900,450049:2900,450034:4050,450039:3100,450041:5600,450021:2900,450019:4650,450050:2700,450047:3100,450045:2900,450046:5600,450036:5800,450042:5600,450025:2900,450032:4350,450024:5800,450022:4350,450020:4350,450035:4200,450044:4350,450122:4050,450121:4050,450051:2700,450028:4050,450038:3100,450029:4350
 -	pointshop	arm1#Supplement Part Equipment	-1,#CASHPOINTS,15110:2400,15343:3375
 -	pointshop	arm1#Upgrade Part Equipment	-1,#CASHPOINTS,15015:2500,15016:2500,15021:2500,15020:2500,15344:9000,15111:3240,15017:2500,15019:2500,15018:2500
+-	pointshop	arm1#Mora Equipment	-1,#CASHPOINTS,15024:1650,15025:2380,15026:2380,15027:2380,15028:2380,15029:2400,15030:4200,15036:4200,15037:2400,15038:3240,15039:540,15042:2900,15043:2700

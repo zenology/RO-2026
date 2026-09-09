@@ -49,7 +49,7 @@ paramk,33,166,4	script	Kaedra#offline	4_F_ESTLOVELOY,{
 		if (.@letter == 20) .@shop$ = "shd0#W";
 	}
 	if (.@cat == 1) {
-		.@letter = select("Automatic Equipment:Enhanced Time Guardian Equipment:Glacier Equipment:Gray Equipment:Illusion Equipment:Poenitentia Equipment:Royal Banquet / Royal Guard Shield:Upgrade Part Equipment:") - 1;
+		.@letter = select("Automatic Equipment:Enhanced Time Guardian Equipment:Glacier Equipment:Gray Equipment:Illusion Equipment:Poenitentia Equipment:Royal Banquet / Royal Guard Shield:Upgrade Part Equipment:Mora Equipment:") - 1;
 		if (.@letter == 0) .@shop$ = "shd1#Automatic Equipment";
 		if (.@letter == 1) .@shop$ = "shd1#Enhanced Time Guardian Equipment";
 		if (.@letter == 2) .@shop$ = "shd1#Glacier Equipment";
@@ -58,6 +58,7 @@ paramk,33,166,4	script	Kaedra#offline	4_F_ESTLOVELOY,{
 		if (.@letter == 5) .@shop$ = "shd1#Poenitentia Equipment";
 		if (.@letter == 6) .@shop$ = "shd1#Royal Banquet / Royal Guard Shield";
 		if (.@letter == 7) .@shop$ = "shd1#Upgrade Part Equipment";
+if (.@letter == 8) .@shop$ = "shd1#Mora Equipment";
 	}
 	if (.@shop$ == "") { close; }
 	callfunc "F_BlackMarketDailyRemark", "Kaedra", $BlackMarketRateKaedra;
@@ -100,3 +101,4 @@ OnInit:
 -	pointshop	shd1#Poenitentia Equipment	-1,#CASHPOINTS,460013:6735
 -	pointshop	shd1#Royal Banquet / Royal Guard Shield	-1,#CASHPOINTS,28900:3000
 -	pointshop	shd1#Upgrade Part Equipment	-1,#CASHPOINTS,2150:2500,2149:2500,2151:2500
+-	pointshop	shd1#Mora Equipment	-1,#CASHPOINTS,2156:2500
