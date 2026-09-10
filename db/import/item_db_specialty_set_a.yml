@@ -1,0 +1,81 @@
+Header:
+  Type: ITEM_DB
+  Version: 3
+Body:
+- Id: 520049
+  AegisName: Adulter_F_N_Axe
+  Name: Adulter Fides Nature Axe
+  Type: Weapon
+  SubType: 1hAxe
+  Weight: 750
+  Attack: 270
+  Slots: 2
+  Locations:
+    Right_Hand: true
+  WeaponLevel: 4
+  EquipLevelMin: 180
+  Refineable: true
+  Jobs:
+    All: false
+  Script: bonus bUnbreakableWeapon; .@r=getrefine(); bonus bAtk,12*(.@r/3); if (.@r>=9)
+    bonus2 bAddSize,Size_All,15; if (.@r>=12) bonus bLongAtkRate,15;
+- Id: 520050
+  AegisName: Vivatus_F_N_Axe
+  Name: Vivatus Fides Nature Axe
+  Type: Weapon
+  SubType: 1hAxe
+  Weight: 750
+  Attack: 270
+  Slots: 2
+  Locations:
+    Right_Hand: true
+  WeaponLevel: 5
+  EquipLevelMin: 210
+  Refineable: true
+  Gradable: true
+  Jobs:
+    All: false
+  Script: bonus bUnbreakableWeapon; .@r=getrefine(); .@g=getenchantgrade(); bonus
+    bAtk,12*(.@r/3); if (.@r>=9) bonus2 bAddSize,Size_All,15; if (.@r>=12) bonus bLongAtkRate,15;
+    if (.@g>=ENCHANTGRADE_B) bonus bAtkRate,7; if (.@r>=11 && .@g>=ENCHANTGRADE_A)
+    { bonus bPow,.@r/3; bonus bPAtk,.@r/3; }
+- Id: 590105
+  AegisName: Adulter_F_N_Hall
+  Name: Adulter Fides Nature Scepter
+  Type: Weapon
+  SubType: Mace
+  Weight: 160
+  Attack: 160
+  MagicAttack: 220
+  Slots: 2
+  Locations:
+    Right_Hand: true
+  WeaponLevel: 4
+  EquipLevelMin: 180
+  Refineable: true
+  Jobs:
+    All: false
+  Script: bonus bUnbreakableWeapon; .@r=getrefine(); bonus bMatk,12*(.@r/3); if (.@r>=9)
+    bonus2 bMagicAddSize,Size_All,15; if (.@r>=12) bonus2 bMagicAtkEle,Ele_Wind,15;
+- Id: 590106
+  AegisName: Vivatus_F_N_Hall
+  Name: Vivatus Fides Nature Scepter
+  Type: Weapon
+  SubType: Mace
+  Weight: 160
+  Attack: 160
+  MagicAttack: 220
+  Slots: 2
+  Locations:
+    Right_Hand: true
+  WeaponLevel: 5
+  EquipLevelMin: 210
+  Refineable: true
+  Gradable: true
+  Jobs:
+    All: false
+  Script: bonus bUnbreakableWeapon; .@r=getrefine(); .@g=getenchantgrade(); bonus
+    bMatk,12*(.@r/3); if (.@r>=9) bonus2 bMagicAddSize,Size_All,15; if (.@r>=11 &&
+    .@g>=ENCHANTGRADE_D) bonus2 bMagicAtkEle,Ele_All,15; if (.@r>=12) bonus2 bMagicAtkEle,Ele_Wind,15;
+    if (.@g>=ENCHANTGRADE_B) bonus bMatkRate,7; if (.@r>=11 && .@g>=ENCHANTGRADE_A)
+    { bonus bSpl,.@r/3; bonus bSMatk,.@r/3; }

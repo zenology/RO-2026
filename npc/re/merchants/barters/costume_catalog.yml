@@ -10024,150 +10024,144 @@ Body:
             Item: Evt_Cos_Coin
             Amount: 40
       - Index: 8
-        Item: aegis_410315
-        RequiredItems:
-          - Index: 0
-            Item: Evt_Cos_Coin
-            Amount: 40
-      - Index: 9
         Item: C_Evil_Mask
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 20
-      - Index: 10
+      - Index: 9
         Item: C_Demons_Familiar
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 11
+      - Index: 10
         Item: C_Desert_Wolf_B
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 20
-      - Index: 12
+      - Index: 11
         Item: C_Frantic_Looking
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 30
-      - Index: 13
+      - Index: 12
         Item: C_Minions_Of_Devil
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 20
-      - Index: 14
+      - Index: 13
         Item: C_Deviruchi_Apron
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 30
-      - Index: 15
+      - Index: 14
         Item: C_2022Cosutama_Imp_JP
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 16
+      - Index: 15
         Item: C_Devoted_Eyes
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 10
-      - Index: 17
+      - Index: 16
         Item: C_Diabolus_Wing
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 30
-      - Index: 18
+      - Index: 17
         Item: C_Diadem
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 10
-      - Index: 19
+      - Index: 18
         Item: C_Diadem_V
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 30
-      - Index: 20
+      - Index: 19
         Item: C_Dip_Schmitz
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 21
+      - Index: 20
         Item: C_Diver's_Goggles
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 20
-      - Index: 22
+      - Index: 21
         Item: C_Divine_Twinkling
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 23
+      - Index: 22
         Item: C_Diving_Goggles
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 30
-      - Index: 24
+      - Index: 23
         Item: C_Afro_Wig
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 25
+      - Index: 24
         Item: C_Dokkebi_Mask
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 20
-      - Index: 26
+      - Index: 25
         Item: C_Dokkebi_Mask_V
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 27
+      - Index: 26
         Item: C_Tha_Maero_Mask_J
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 28
+      - Index: 27
         Item: C_Dr_Eggman_Mask
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 29
+      - Index: 28
         Item: C_Dragon_Arhat_Mask
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 30
+      - Index: 29
         Item: C_YDragon_SkyWing
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 31
+      - Index: 30
         Item: C_DragonKnight_Eyepatch
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 32
+      - Index: 31
         Item: C_Drooping_Elven_Ears
         RequiredItems:
           - Index: 0
@@ -10284,48 +10278,36 @@ Body:
             Item: Evt_Cos_Coin
             Amount: 30
       - Index: 18
-        Item: C_Exploding_Wave_Sca
-        RequiredItems:
-          - Index: 0
-            Item: Evt_Cos_Coin
-            Amount: 20
-      - Index: 19
         Item: C_Eye_Bandage
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 20
-      - Index: 20
-        Item: C_Eye_of_Necromancer
-        RequiredItems:
-          - Index: 0
-            Item: Evt_Cos_Coin
-            Amount: 40
-      - Index: 21
+      - Index: 19
         Item: Eye_Patch_Blue
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 22
+      - Index: 20
         Item: Eye_Patch_Red
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 23
+      - Index: 21
         Item: C_Eye_Mask
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 24
+      - Index: 22
         Item: C_Eyes_Of_Darkness
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 10
-      - Index: 25
+      - Index: 23
         Item: C_Eyes_Of_Ifrit
         RequiredItems:
           - Index: 0
@@ -10850,42 +10832,36 @@ Body:
             Item: Evt_Cos_Coin
             Amount: 40
       - Index: 2
-        Item: C_Spot_Flower
-        RequiredItems:
-          - Index: 0
-            Item: Evt_Cos_Coin
-            Amount: 40
-      - Index: 3
         Item: C_Eyes_Of_Illusion
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 30
-      - Index: 4
+      - Index: 3
         Item: C_Imperial_Feather
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 5
+      - Index: 4
         Item: C_Injured_Eyepatch_JP
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 6
+      - Index: 5
         Item: C_Rainbow_Veil_V
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 7
+      - Index: 6
         Item: C_Ep19_Iwin
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 8
+      - Index: 7
         Item: C_10_Type_Glasses
         RequiredItems:
           - Index: 0
@@ -11646,162 +11622,156 @@ Body:
             Item: Evt_Cos_Coin
             Amount: 40
       - Index: 3
-        Item: C_Perm_Frost_Oblivion
-        RequiredItems:
-          - Index: 0
-            Item: Evt_Cos_Coin
-            Amount: 40
-      - Index: 4
         Item: C_Persika_J
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 20
-      - Index: 5
+      - Index: 4
         Item: C_Pet_Popcorn_Box
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 6
+      - Index: 5
         Item: C_Phantom_Ear
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 7
+      - Index: 6
         Item: C_Eyes_Phen
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 8
+      - Index: 7
         Item: C_Picnic_Basket
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 9
+      - Index: 8
         Item: C_Bell_Pigeon
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 10
-      - Index: 10
+      - Index: 9
         Item: C_PocketWatch_Hair_Orna
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 10
-      - Index: 11
+      - Index: 10
         Item: C_Goblin_Mask_01
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 12
+      - Index: 11
         Item: aegis_410167
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 13
+      - Index: 12
         Item: C_Pope_Ribbon_R
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 14
+      - Index: 13
         Item: C_Solo_Play_Box1
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 15
+      - Index: 14
         Item: C_23Anniv_Poring1
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 16
+      - Index: 15
         Item: C_Poring_On_Shoulder
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 20
-      - Index: 17
+      - Index: 16
         Item: C_23Anniv_Poring2
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 18
+      - Index: 17
         Item: C_ROROGO
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 30
-      - Index: 19
+      - Index: 18
         Item: C_Poring_Sunglasses_J
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 20
-      - Index: 20
+      - Index: 19
         Item: C_Supplement_P_Income
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 30
-      - Index: 21
+      - Index: 20
         Item: C_Pray_Cherry_Blossom
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 20
-      - Index: 22
+      - Index: 21
         Item: C_Pretty_Rabbit_Hood
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 10
-      - Index: 23
+      - Index: 22
         Item: C_Romance_Rose_J
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 24
+      - Index: 23
         Item: C_Professor_MiniGlass
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 30
-      - Index: 25
+      - Index: 24
         Item: C_Protect_Feathers
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 30
-      - Index: 26
+      - Index: 25
         Item: C_Tatenasi_Helmet
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 27
+      - Index: 26
         Item: C_37_Sculpt
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 10
-      - Index: 28
+      - Index: 27
         Item: C_Belka_Strelka
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 29
+      - Index: 28
         Item: C_Luxury_Sunglasses
         RequiredItems:
           - Index: 0
@@ -18898,30 +18868,24 @@ Body:
             Item: Evt_Cos_Coin
             Amount: 40
       - Index: 8
-        Item: C_2025RosFesta
-        RequiredItems:
-          - Index: 0
-            Item: Evt_Cos_Coin
-            Amount: 40
-      - Index: 9
         Item: C_Rose_Gothic_Ribbon
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 10
+      - Index: 9
         Item: C_Qualifier_2nd
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 11
+      - Index: 10
         Item: C_Qualifier_1st
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 12
+      - Index: 11
         Item: C_2023RTC_S_Robe2
         RequiredItems:
           - Index: 0
@@ -19206,30 +19170,24 @@ Body:
             Item: Evt_Cos_Coin
             Amount: 30
       - Index: 3
-        Item: C_Valkyrie_Wing
-        RequiredItems:
-          - Index: 0
-            Item: Evt_Cos_Coin
-            Amount: 20
-      - Index: 4
         Item: C_Blessed_Veil
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 30
-      - Index: 5
+      - Index: 4
         Item: Calabash
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 6
+      - Index: 5
         Item: C_Violet_Halo
         RequiredItems:
           - Index: 0
             Item: Evt_Cos_Coin
             Amount: 40
-      - Index: 7
+      - Index: 6
         Item: C_VioletHalo
         RequiredItems:
           - Index: 0

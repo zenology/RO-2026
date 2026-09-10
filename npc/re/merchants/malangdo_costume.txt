@@ -425,45 +425,89 @@ mal_in01,20,124,5	script	Designer Heidam#eventhat	4_CAT_SAILOR5,{
 		440002;		// C_Happy_Cat_TW
 
 	for (.@round = 0; .@round < 100; ++.@round) {
-		for ( .@i = 0; .@i < 18; ++.@i ) {
-			if (getiteminfo(.@box_list[.@i], ITEMINFO_TYPE) == -1)	// temporary check
+		getinventorylist;
+		.@found = 0;
+		.@restart = 0;
+		for (.@i = 0; .@i < @inventorylist_count; ++.@i) {
+			.@id = @inventorylist_id[.@i];
+			if (!callfunc("F_CostumeEnhancePoolCheck", .@id))
 				continue;
-			.@size = getarraysize( getd(".@item_list_" + .@i) );
-			for ( .@h = 0; .@h < .@size; ++.@h ) {
-				.@id = getd( ".@item_list_" + .@i + "[" + .@h + "]" );
-				if (getiteminfo(.@id, ITEMINFO_TYPE) == -1)	// temporary check
-					continue;
-				if (countitem(.@id) < 1)
-					continue;
-				mes "[Designer Heidam]";
-				mes "I see that you have a ^3131FF" + getitemname(.@id) + "^000000. Do you want to exchange this for a costume enchantment box?";
-				next;
-				switch( select( "Exchange", "Look for something else", "Stop Exchanging" ) ) {
-				case 1:
-					mes "[Designer Heidam]";
-					if (countitem(.@id) < 1)
-						mes "Oh~ Something suddenly disappeared...";
-					else {
-						mes "Exchange Completed.";
-						delitem .@id, 1;
-						getitem .@box_list[.@i], 1;
+			if (@inventorylist_equip[.@i] || @inventorylist_refine[.@i] || @inventorylist_attribute[.@i] || @inventorylist_expire[.@i] || @inventorylist_enchantgrade[.@i])
+				continue;
+			if (@inventorylist_card1[.@i] || @inventorylist_card2[.@i] || @inventorylist_card3[.@i] || @inventorylist_card4[.@i])
+				continue;
+			.@has_option = 0;
+			for (.@option = 1; .@option <= 5; ++.@option) {
+				if (getd("@inventorylist_option_id" + .@option + "[" + .@i + "]"))
+					.@has_option = 1;
+			}
+			if (.@has_option)
+				continue;
+
+			.@found = 1;
+			.@inventory_index = @inventorylist_idx[.@i];
+			mes "[Designer Heidam]";
+			mes "I see that you have a ^3131FF" + getitemname(.@id) + "^000000. Do you want to exchange this for a costume enchantment box?";
+			next;
+			switch (select("Exchange", "Look for something else", "Stop Exchanging")) {
+			case 1:
+				.@mapping = inarray(getvariableofnpc(.HeidamCostumeId[0], "costume_enhancement_db"), .@id);
+				if (.@mapping >= 0)
+					.@box_id = getelementofarray(getvariableofnpc(.HeidamCostumeBoxId[0], "costume_enhancement_db"), .@mapping);
+				else
+					.@box_id = getelementofarray(getvariableofnpc(.HeidamBoxId[0], "costume_enhancement_db"), rand(37));
+
+				getinventorylist;
+				.@verified = -1;
+				for (.@verify = 0; .@verify < @inventorylist_count; ++.@verify) {
+					if (@inventorylist_idx[.@verify] == .@inventory_index) {
+						.@verified = .@verify;
+						break;
 					}
-					mes "Let me check you for another item to exchange...";
-					next;
-					break;
-				case 2:
-					break;
-				case 3:
-					mes "[Designer Heidam]";
-					mes "Meow? Where are you going?";
-					close;
 				}
+				.@invalid = .@verified < 0;
+				if (!.@invalid) {
+					.@invalid = @inventorylist_id[.@verified] != .@id || @inventorylist_equip[.@verified] || @inventorylist_refine[.@verified] || @inventorylist_attribute[.@verified] || @inventorylist_expire[.@verified] || @inventorylist_enchantgrade[.@verified];
+					.@invalid = .@invalid || @inventorylist_card1[.@verified] || @inventorylist_card2[.@verified] || @inventorylist_card3[.@verified] || @inventorylist_card4[.@verified];
+					for (.@option = 1; .@option <= 5; ++.@option) {
+						if (getd("@inventorylist_option_id" + .@option + "[" + .@verified + "]"))
+							.@invalid = 1;
+					}
+				}
+				mes "[Designer Heidam]";
+				if (.@invalid || !callfunc("F_CostumeEnhancePoolCheck", .@id)) {
+					mes "Oh~ That costume changed or disappeared, so I did not exchange it.";
+				}
+				else if (!checkweight(.@box_id, 1)) {
+					mes "You cannot carry the enchantment box. Make some room and try again.";
+				}
+				else if (!delitemidx(.@inventory_index, 1)) {
+					mes "Oh~ I could not take that exact costume, so I did not give out a box.";
+				}
+				else {
+					getitem .@box_id, 1;
+					mes "Exchange Completed.";
+				}
+				mes "Let me check you for another item to exchange...";
+				next;
+				.@restart = 1;
+				break;
+			case 2:
+				break;
+			case 3:
+				mes "[Designer Heidam]";
+				mes "Meow? Where are you going?";
+				close;
 			}
 		}
+		if (.@restart)
+			continue;
 		mes "[Designer Heidam]";
 		mes "Guess that is all.";
+		if (!.@found)
+			mes "I only accept unequipped, unenchanted costumes from the Costume Roulette collection.";
 		next;
-		if (select( "Look more", "Quit" ) == 2) {
+		if (select("Look more", "Quit") == 2) {
 			mes "[Designer Heidam]";
 			mes "Bye~";
 			close;

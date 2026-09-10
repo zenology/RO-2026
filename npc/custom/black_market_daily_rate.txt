@@ -54,6 +54,11 @@ function	script	F_BlackMarketDailyRemark	{
 		else if (.@band == 2) mes "Taste has become just a little more expensive tonight.";
 		else if (.@band == 3) mes "Darling, excellence is in a demanding mood tonight.";
 		else mes "Beauty has become ruinously exclusive tonight. Naturally.";
+} else if (.@seller$ == "Madame Celestine") {
+		if (.@band == 0) mes "The set ledgers have loosened their grip tonight.";
+		else if (.@band == 2) mes "Complete sets are asking a little more tonight.";
+		else if (.@band == 3) mes "The specialist has priced every missing piece dearly.";
+		else mes "A complete set has never felt so exclusive.";
 	} else {
 		if (.@band == 0) mes "The card table is dealing kindly tonight.";
 		else if (.@band == 2) mes "The card table wants a little more tonight.";
@@ -73,6 +78,7 @@ OnClock0000:
 	$BlackMarketRateTess = rand(-10,30);
 	$BlackMarketRateWeaver = rand(-10,30);
 	$BlackMarketRateSeraphine = rand(-10,30);
+	$BlackMarketRateSpecialty = rand(-10,30);
 	$BlackMarketRateCards = rand(-10,30);
 	end;
 }

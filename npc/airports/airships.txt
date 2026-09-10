@@ -1,22 +1,22 @@
-//===== rAthena Script ======================================= 
+//===== rAthena Script =======================================
 //= The Airship System Script
-//===== By: ================================================== 
+//===== By: ==================================================
 //= rAthena Dev Team
 //===== Current Version: =====================================
 //= 1.0
-//===== Compatible With: ===================================== 
+//===== Compatible With: =====================================
 //= rAthena Project
-//===== Description: ========================================= 
+//===== Description: =========================================
 //= The Airship System used in the official servers.
-//===== Additional Comments: ================================= 
+//===== Additional Comments: =================================
 //= 1.0 First version.
-//============================================================ 
+//============================================================
 
-//============================================================ 
+//============================================================
 //= Domestic Airship Route
 //= ... -> Juno -> Einbroch -> Lighthalzen -> Einbroch
 //= -> Juno -> Hugel -> ...
-//============================================================ 
+//============================================================
 
 airplane,243,73,0	script	#AirshipWarp-1	45,1,1,{
 	end;
@@ -34,8 +34,8 @@ OnUnhide:
 
 OnTouch_:
 	switch ($@airplanelocation) {
-	case 0: warp "yuno",92,260; end;
-	case 1: warp "einbroch",92,278; end;
+	case 0: warp "y_airport",142,57; end;
+	case 1: warp "airport",142,57; end;
 	case 2: warp "lighthalzen",302,75; end;
 	case 3: warp "hugel",181,146; end;
 	}
@@ -647,24 +647,24 @@ airplane,50,66,5	script	Apple Merchant#airplane	86,{
 	}
 }
 
-//============================================================ 
+//============================================================
 //= International Airship Route
 //= ... -> Izlude -> Juno -> Rachel -> ...
-//============================================================ 
+//============================================================
 
 airplane_01,243,73,0	script	#AirshipWarp-3	45,1,1,{
 	end;
-	
+
 OnTouch_:
 	switch ($@airplanelocation2) {
 	case 0: warp "ra_fild12",292,204; end;
-	case 1: 
+	case 1:
 		if(checkre(0))
 			warp "izlude",200,73;
 		else
 			warp "izlude",200,56;
 		end;
-	case 2: warp "yuno",12,261; end;
+	case 2: warp "y_airport",142,57; end;
 	}
 
 OnInit:
@@ -672,7 +672,7 @@ OnHide:
 	specialeffect EF_BASH;
 	disablenpc();
 	end;
-	
+
 OnUnhide:
 	enablenpc();
 	specialeffect EF_SUMMONSLAVE;
@@ -1058,9 +1058,9 @@ airplane_01,71,31,2	script	Swordsman Shimizu#air_01	106,{
 	close;
 }
 
-//============================================================ 
+//============================================================
 //= Typing Challenge
-//============================================================ 
+//============================================================
 airplane_01,32,61,4	script	Nils#ein	49,1,1,{
 	mes "[Nils]";
 	mes "Welcome to the";
@@ -1233,9 +1233,9 @@ airplane_01,32,61,4	script	Nils#ein	49,1,1,{
 	}
 }
 
-//============================================================ 
+//============================================================
 //= Apple Gambling
-//============================================================ 
+//============================================================
 airplane_01,33,68,4	script	Clarice	74,{
 	mes "[Clarice]";
 	mes "Hi, I'm Clarice~";

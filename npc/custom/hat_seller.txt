@@ -44,7 +44,7 @@ paramk,41,173,2	script	Harlan#offline	897,{
 	mes "Tournament leftovers, if you missed the crowd.";
 	mes "^0055FFCash Points^000000 only. No eggs.";
 	next;
-	switch (select("Equipment:Rental:Specialty:Event:")) {
+	switch (select("Equipment:Rental:Event:")) {
 	case 1:
 		callsub S_OpenCatalog, 0;
 		end;
@@ -53,9 +53,6 @@ paramk,41,173,2	script	Harlan#offline	897,{
 		end;
 	case 3:
 		callsub S_OpenCatalog, 2;
-		end;
-	case 4:
-		callsub S_OpenCatalog, 3;
 		end;
 	}
 	end;
@@ -73,9 +70,6 @@ S_OpenCatalog:
 	} else if (.@kind == 1) {
 		.@menu$ = getvariableofnpc(.RentMenu$[.@slot], "hat_seller_db");
 		.@prefix$ = "rent";
-	} else if (.@kind == 2) {
-		.@menu$ = getvariableofnpc(.SpecMenu$[.@slot], "hat_seller_db");
-		.@prefix$ = "spec";
 	} else {
 		.@menu$ = getvariableofnpc(.EvtMenu$[.@slot], "hat_seller_db");
 		.@prefix$ = "evt";
@@ -91,8 +85,6 @@ S_OpenCatalog:
 		.@letter$ = getvariableofnpc(.HatLetter$[.@idx], "hat_seller_db");
 	else if (.@kind == 1)
 		.@letter$ = getvariableofnpc(.RentLetter$[.@idx], "hat_seller_db");
-	else if (.@kind == 2)
-		.@letter$ = getvariableofnpc(.SpecLetter$[.@idx], "hat_seller_db");
 	else
 		.@letter$ = getvariableofnpc(.EvtLetter$[.@idx], "hat_seller_db");
 	callfunc "F_BlackMarketDailyRemark", "Harlan", $BlackMarketRateHarlan;
@@ -264,87 +256,6 @@ S_OpenCatalog:
 -	pointshop	rent2#X	-1,#CASHPOINTS,501:100
 -	pointshop	rent2#Y	-1,#CASHPOINTS,501:100
 -	pointshop	rent2#Z	-1,#CASHPOINTS,501:100
--	pointshop	spec0#0	-1,#CASHPOINTS,501:100
--	pointshop	spec0#A	-1,#CASHPOINTS,501:100
--	pointshop	spec0#B	-1,#CASHPOINTS,501:100
--	pointshop	spec0#C	-1,#CASHPOINTS,501:100
--	pointshop	spec0#D	-1,#CASHPOINTS,501:100
--	pointshop	spec0#E	-1,#CASHPOINTS,501:100
--	pointshop	spec0#F	-1,#CASHPOINTS,501:100
--	pointshop	spec0#G	-1,#CASHPOINTS,501:100
--	pointshop	spec0#H	-1,#CASHPOINTS,501:100
--	pointshop	spec0#I	-1,#CASHPOINTS,501:100
--	pointshop	spec0#J	-1,#CASHPOINTS,501:100
--	pointshop	spec0#K	-1,#CASHPOINTS,501:100
--	pointshop	spec0#L	-1,#CASHPOINTS,501:100
--	pointshop	spec0#M	-1,#CASHPOINTS,501:100
--	pointshop	spec0#N	-1,#CASHPOINTS,501:100
--	pointshop	spec0#O	-1,#CASHPOINTS,501:100
--	pointshop	spec0#P	-1,#CASHPOINTS,501:100
--	pointshop	spec0#Q	-1,#CASHPOINTS,501:100
--	pointshop	spec0#R	-1,#CASHPOINTS,501:100
--	pointshop	spec0#S	-1,#CASHPOINTS,501:100
--	pointshop	spec0#T	-1,#CASHPOINTS,501:100
--	pointshop	spec0#U	-1,#CASHPOINTS,501:100
--	pointshop	spec0#V	-1,#CASHPOINTS,501:100
--	pointshop	spec0#W	-1,#CASHPOINTS,501:100
--	pointshop	spec0#X	-1,#CASHPOINTS,501:100
--	pointshop	spec0#Y	-1,#CASHPOINTS,501:100
--	pointshop	spec0#Z	-1,#CASHPOINTS,501:100
--	pointshop	spec1#0	-1,#CASHPOINTS,501:100
--	pointshop	spec1#A	-1,#CASHPOINTS,501:100
--	pointshop	spec1#B	-1,#CASHPOINTS,501:100
--	pointshop	spec1#C	-1,#CASHPOINTS,501:100
--	pointshop	spec1#D	-1,#CASHPOINTS,501:100
--	pointshop	spec1#E	-1,#CASHPOINTS,501:100
--	pointshop	spec1#F	-1,#CASHPOINTS,501:100
--	pointshop	spec1#G	-1,#CASHPOINTS,501:100
--	pointshop	spec1#H	-1,#CASHPOINTS,501:100
--	pointshop	spec1#I	-1,#CASHPOINTS,501:100
--	pointshop	spec1#J	-1,#CASHPOINTS,501:100
--	pointshop	spec1#K	-1,#CASHPOINTS,501:100
--	pointshop	spec1#L	-1,#CASHPOINTS,501:100
--	pointshop	spec1#M	-1,#CASHPOINTS,501:100
--	pointshop	spec1#N	-1,#CASHPOINTS,501:100
--	pointshop	spec1#O	-1,#CASHPOINTS,501:100
--	pointshop	spec1#P	-1,#CASHPOINTS,501:100
--	pointshop	spec1#Q	-1,#CASHPOINTS,501:100
--	pointshop	spec1#R	-1,#CASHPOINTS,501:100
--	pointshop	spec1#S	-1,#CASHPOINTS,501:100
--	pointshop	spec1#T	-1,#CASHPOINTS,501:100
--	pointshop	spec1#U	-1,#CASHPOINTS,501:100
--	pointshop	spec1#V	-1,#CASHPOINTS,501:100
--	pointshop	spec1#W	-1,#CASHPOINTS,501:100
--	pointshop	spec1#X	-1,#CASHPOINTS,501:100
--	pointshop	spec1#Y	-1,#CASHPOINTS,501:100
--	pointshop	spec1#Z	-1,#CASHPOINTS,501:100
--	pointshop	spec2#0	-1,#CASHPOINTS,501:100
--	pointshop	spec2#A	-1,#CASHPOINTS,501:100
--	pointshop	spec2#B	-1,#CASHPOINTS,501:100
--	pointshop	spec2#C	-1,#CASHPOINTS,501:100
--	pointshop	spec2#D	-1,#CASHPOINTS,501:100
--	pointshop	spec2#E	-1,#CASHPOINTS,501:100
--	pointshop	spec2#F	-1,#CASHPOINTS,501:100
--	pointshop	spec2#G	-1,#CASHPOINTS,501:100
--	pointshop	spec2#H	-1,#CASHPOINTS,501:100
--	pointshop	spec2#I	-1,#CASHPOINTS,501:100
--	pointshop	spec2#J	-1,#CASHPOINTS,501:100
--	pointshop	spec2#K	-1,#CASHPOINTS,501:100
--	pointshop	spec2#L	-1,#CASHPOINTS,501:100
--	pointshop	spec2#M	-1,#CASHPOINTS,501:100
--	pointshop	spec2#N	-1,#CASHPOINTS,501:100
--	pointshop	spec2#O	-1,#CASHPOINTS,501:100
--	pointshop	spec2#P	-1,#CASHPOINTS,501:100
--	pointshop	spec2#Q	-1,#CASHPOINTS,501:100
--	pointshop	spec2#R	-1,#CASHPOINTS,501:100
--	pointshop	spec2#S	-1,#CASHPOINTS,501:100
--	pointshop	spec2#T	-1,#CASHPOINTS,501:100
--	pointshop	spec2#U	-1,#CASHPOINTS,501:100
--	pointshop	spec2#V	-1,#CASHPOINTS,501:100
--	pointshop	spec2#W	-1,#CASHPOINTS,501:100
--	pointshop	spec2#X	-1,#CASHPOINTS,501:100
--	pointshop	spec2#Y	-1,#CASHPOINTS,501:100
--	pointshop	spec2#Z	-1,#CASHPOINTS,501:100
 -	pointshop	evt0#0	-1,#CASHPOINTS,501:100
 -	pointshop	evt0#A	-1,#CASHPOINTS,501:100
 -	pointshop	evt0#B	-1,#CASHPOINTS,501:100
@@ -530,26 +441,6 @@ OnInit:
 	setarray .RentPrice[0], 700,70,70,70,70,70,70,2100,1400,196,140,70,140,700,700,840,1400,840,840;
 	setarray .RentDisp$[0], "3D Glasses Box","Cheering Scarf Box","Cheering Scarf Box","Cheering Scarf Box","Cheering Scarf Box","Cheering Scarf Box","Cheering Scarf Box","Freya's Crown Box","Pecopeco Hairband Box","Hockey Mask Box","Observer Box","Bubble Gum Box","Freya's Spiritual Circlet Box","Four Leaf Clover in Mouth R Box III","Chewing Bubble Gum R Box III","Spiked Scarf BoxIII","Rainbow Scarf BoxIII","Life Ribbon BoxIII","Umbala Spirit 7days Box";
 	// Confirmed endgame headgear families. Families already sold by the imported Cash Mall exchange (Good and Evil and Furious) stay out of Harlan.
-	setarray .SpecId[0], 19474,19475,19476,19477,19478,19479,19480,19481,19482,19483,19484,19485,19486,19487,19488,19489,19490,19491,19492,18971;
-	setarray .SpecId[20], 18972,18973,18974,18975,18976,18977,18978,18979,18980,18981,18982,18983,18984,400975,400976,400977,400978,400979,400980,400981;
-	setarray .SpecId[40], 400982,400983,400984,400985,400986,400987,400988,400989,400990,400991,400992,19144,410088,410089,401058,401059,401060,401115,401116,401117;
-	setarray .SpecId[60], 401118,401119,401120;
-	.SpecCount = 63;
-	setarray .SpecPrice[0], 8200,6450,8200,8200,8200,8200,7200,4300,8600,8600,4500,8400,6450,8400,8200,6450,6450,6400,8400,5850;
-	setarray .SpecPrice[20], 4680,5850,4950,3300,4100,3500,4200,5850,4100,4100,6450,6750,6150,11380,10980,10980,10980,11380,12180,12180;
-	setarray .SpecPrice[40], 14580,9780,11380,11380,12180,10980,11380,11380,14580,10980,13980,2500,8400,9000,9380,11180,11180,11180,11180,9380;
-	setarray .SpecPrice[60], 11380,10380,11180;
-	setarray .SpecDisp$[0], "Temporal Circlet(Rune Knight)","Temporal Circlet(Royal Guard)","Temporal Circlet(Mechanic)","Temporal Circlet(Genetic)","Temporal Circlet(Guillotine Cross)","Temporal Circlet(Shadow Chaser)","Temporal Circlet(Archbishop)","Temporal Circlet(Sura)","Temporal Circlet(Warlock)","Temporal Circlet(Sorcerer)","Temporal Circlet(Ranger)","Temporal Circlet(Wanderer&Minstrel)","Temporal Circlet(Star Emperor)","Temporal Circlet(Soul Reaper)","Temporal Circlet(Rebellion)","Temporal Circlet(Oboro)","Temporal Circlet(Kagerou)","Temporal Circlet(Super Novice)","Temporal Circlet(Summoner)","Old Rune Circlet";
-	setarray .SpecDisp$[20], "Old Mitra","Old Driver Band","Old Driver Band(Yellow)","Old Shadow Handicraft","Old Minstrel Song's Hat","Old Midas Whisper","Old Magic Stone Hat","Old Blazing Soul","Old Wind Whisper","Old Dying Swan","Old Bone Circlet","Old Crown of Guardian","Old Camouflage Rabbit Hood","Frontier Rune Crown(Dragon Knight)","Frontier Rune Crown(Imperial Guard)","Frontier Rune Crown(Meister)","Frontier Rune Crown(Biolo)","Frontier Rune Crown(Shadow Cross)","Frontier Rune Crown(Abyss Chaser)","Frontier Rune Crown(Arch Mage)";
-	setarray .SpecDisp$[40], "Frontier Rune Crown(Elemental Master)","Frontier Rune Crown(Cardinal)","Frontier Rune Crown(Inquisitor)","Frontier Rune Crown(Windhawk)","Frontier Rune Crown(Troubadour & Trouvere)","Frontier Rune Crown(Shinkiro & Shiranui)","Frontier Rune Crown(Night Watch)","Frontier Rune Crown(Sky Emperor)","Frontier Rune Crown(Soul Ascetic)","Frontier Rune Crown(Hyper Novice)","Frontier Rune Crown(Spirit Handler)","Ferlock's Hat","Powered Income","Powered Income","Helm of Faith II(Minstrel&Wanderer)","Helm of Faith(Mechanic)","Helm of Faith II(Mechanic)","Helm of Faith(Genetic)","Helm of Faith II(Genetic)","Helm of Faith(Kagerou&Oboro)";
-	setarray .SpecDisp$[60], "Helm of Faith II(Kagerou&Oboro)","Helm of Faith(Rebellion)","Helm of Faith II(Rebellion)";
-	setarray .SpecFamily$[0], "Temporal Circlets","Temporal Circlets","Temporal Circlets","Temporal Circlets","Temporal Circlets","Temporal Circlets","Temporal Circlets","Temporal Circlets","Temporal Circlets","Temporal Circlets","Temporal Circlets","Temporal Circlets","Temporal Circlets","Temporal Circlets","Temporal Circlets","Temporal Circlets","Temporal Circlets","Temporal Circlets","Temporal Circlets","Old Bio Lab Headgear";
-	setarray .SpecFamily$[20], "Old Bio Lab Headgear","Old Bio Lab Headgear","Old Bio Lab Headgear","Old Bio Lab Headgear","Old Bio Lab Headgear","Old Bio Lab Headgear","Old Bio Lab Headgear","Old Bio Lab Headgear","Old Bio Lab Headgear","Old Bio Lab Headgear","Old Bio Lab Headgear","Old Bio Lab Headgear","Old Bio Lab Headgear","Frontier Rune Crowns","Frontier Rune Crowns","Frontier Rune Crowns","Frontier Rune Crowns","Frontier Rune Crowns","Frontier Rune Crowns","Frontier Rune Crowns";
-	setarray .SpecFamily$[40], "Frontier Rune Crowns","Frontier Rune Crowns","Frontier Rune Crowns","Frontier Rune Crowns","Frontier Rune Crowns","Frontier Rune Crowns","Frontier Rune Crowns","Frontier Rune Crowns","Frontier Rune Crowns","Frontier Rune Crowns","Frontier Rune Crowns","Ferlock Equipment","Supplement Part Equipment","Supplement Part Equipment","Sky Rune Crowns","Sky Rune Crowns","Sky Rune Crowns","Sky Rune Crowns","Sky Rune Crowns","Sky Rune Crowns";
-	setarray .SpecFamily$[60], "Sky Rune Crowns","Sky Rune Crowns","Sky Rune Crowns";
-	.SpecFamilyCount = 6;
-	setarray .SpecFamilyName$[0], "Temporal Circlets","Old Bio Lab Headgear","Frontier Rune Crowns","Ferlock Equipment","Supplement Part Equipment","Sky Rune Crowns";
-	setarray .SpecFamilyCode$[0], "A","B","C","D","E","F";
 	// Racing Caps, RWC/RTC/RCC tournament hats, and iRO-history create-pass leftovers. Display names drop [Event]/[S2]/[S3] prefixes. Missing client itemInfo is not a cut. Custom-imported hats with no worn accessory model were removed from item_db on 2026-08-20: 19416, 400938, 420569. Official rAthena rows 5895, 400088, 400089, 400090 still exist upstream and stay off this stall. Gold Dragon Helm 5451 stays on Equipment. Comp_Happy_Balloon_K 15972 sits on Event beside Equipment Happy_Balloon_K 19095 (same View and EXP/drop script; 19102 is Pale Moon Hat). RCC 2013 1st/2nd/3rd crowns stay.
 	setarray .EvtId[0], 5428,5452,5453,5603,5604,5605,5892,5893,5894,18779,18780,18781,18796,18828,18829,18830,19189,19190,19191,19192;
 	setarray .EvtId[20], 19193,19194,19195,19196,19197,19198,19199,19200,19201,19202,19203,19204,19205,19396,19397,401146,420513,420701,420884,420898;
@@ -567,34 +458,27 @@ OnInit:
 
 	deletearray .HatHas[0], 78;
 	deletearray .RentHas[0], 78;
-	deletearray .SpecHas[0], 78;
 	deletearray .EvtHas[0], 78;
 	deletearray .HatHasNum[0], 3;
 	deletearray .RentHasNum[0], 3;
-	deletearray .SpecHasNum[0], 3;
 	deletearray .EvtHasNum[0], 3;
 	deletearray .HatLetter$[0], 81;
 	deletearray .RentLetter$[0], 81;
-	deletearray .SpecLetter$[0], 81;
 	deletearray .EvtLetter$[0], 81;
 	deletearray .HatMenu$[0], 3;
 	deletearray .RentMenu$[0], 3;
-	deletearray .SpecMenu$[0], 3;
 	deletearray .EvtMenu$[0], 3;
 	deletearray .HatLetterCount[0], 3;
 	deletearray .RentLetterCount[0], 3;
-	deletearray .SpecLetterCount[0], 3;
 	deletearray .EvtLetterCount[0], 3;
 
 	for (.@slot = 0; .@slot < 3; ++.@slot) {
 		npcshopdelitem "hat" + .@slot + "#0", 501;
 		npcshopdelitem "rent" + .@slot + "#0", 501;
-		npcshopdelitem "spec" + .@slot + "#0", 501;
 		npcshopdelitem "evt" + .@slot + "#0", 501;
 		for (.@i = 0; .@i < 26; ++.@i) {
 			npcshopdelitem "hat" + .@slot + "#" + charat(.@alphabet$, .@i), 501;
 			npcshopdelitem "rent" + .@slot + "#" + charat(.@alphabet$, .@i), 501;
-			npcshopdelitem "spec" + .@slot + "#" + charat(.@alphabet$, .@i), 501;
 			npcshopdelitem "evt" + .@slot + "#" + charat(.@alphabet$, .@i), 501;
 		}
 	}
@@ -766,87 +650,6 @@ OnInit:
 		}
 	}
 
-	.@kept = 0;
-	for (.@i = 0; .@i < .SpecCount; ++.@i) {
-		.@id = .SpecId[.@i];
-		.@name$ = getitemname(.@id);
-		// Empty / "Unknown Item" / "null" means the ID is missing from item_db. This checkout's getitemname returns "null" for a missing ID, not "Unknown Item". That is not a missing client itemInfo.lua row.
-		if (.@name$ == "" || .@name$ == "Unknown Item" || .@name$ == "null") {
-			debugmes "Hat Seller: missing specialty item " + .@id + ".";
-			continue;
-		}
-		if (getiteminfo(.@id, ITEMINFO_TYPE) != IT_ARMOR) {
-			debugmes "Hat Seller: rejected type for specialty item " + .@id + " (" + .@name$ + ").";
-			continue;
-		}
-		.@loc = getiteminfo(.@id, ITEMINFO_LOCATIONS);
-		if (.@loc & .@costume) {
-			debugmes "Hat Seller: rejected costume slot for specialty item " + .@id + " (" + .@name$ + ").";
-			continue;
-		}
-		.SpecId[.@kept] = .@id;
-		.SpecPrice[.@kept] = .SpecPrice[.@i];
-		.SpecAegis$[.@kept] = getiteminfo(.@id, ITEMINFO_AEGISNAME);
-		.@disp$ = .@name$;
-		.SpecDisp$[.@kept] = .@disp$;
-		.SpecFamily$[.@kept] = .SpecFamily$[.@i];
-		.@specname$[.@kept] = strtolower(.@disp$);
-		.@kept += 1;
-	}
-	.SpecCount = .@kept;
-	for (.@i = 0; .@i < .SpecCount; ++.@i) {
-		for (.@j = .@i + 1; .@j < .SpecCount; ++.@j) {
-			.@cmp = strcmp(.@specname$[.@j], .@specname$[.@i]);
-			if (.@cmp < 0 || (.@cmp == 0 && .SpecId[.@j] < .SpecId[.@i])) {
-				.@tmp = .SpecId[.@i];
-				.SpecId[.@i] = .SpecId[.@j];
-				.SpecId[.@j] = .@tmp;
-				.@tmp = .SpecPrice[.@i];
-				.SpecPrice[.@i] = .SpecPrice[.@j];
-				.SpecPrice[.@j] = .@tmp;
-				.@tmp$ = .SpecAegis$[.@i];
-				.SpecAegis$[.@i] = .SpecAegis$[.@j];
-				.SpecAegis$[.@j] = .@tmp$;
-				.@tmp$ = .SpecDisp$[.@i];
-				.SpecDisp$[.@i] = .SpecDisp$[.@j];
-				.SpecDisp$[.@j] = .@tmp$;
-				.@tmp$ = .SpecFamily$[.@i];
-				.SpecFamily$[.@i] = .SpecFamily$[.@j];
-				.SpecFamily$[.@j] = .@tmp$;
-				.@tmp$ = .@specname$[.@i];
-				.@specname$[.@i] = .@specname$[.@j];
-				.@specname$[.@j] = .@tmp$;
-			}
-		}
-	}
-	for (.@i = 0; .@i < .SpecCount; ++.@i) {
-		.@id = .SpecId[.@i];
-		.@price = .SpecPrice[.@i];
-		.@name$ = .SpecDisp$[.@i];
-		.@loc = getiteminfo(.@id, ITEMINFO_LOCATIONS);
-		.@family = -1;
-		for (.@j = 0; .@j < .SpecFamilyCount; ++.@j) {
-			if (.SpecFamily$[.@i] == .SpecFamilyName$[.@j]) {
-				.@family = .@j;
-				break;
-			}
-		}
-		if (.@family < 0) {
-			debugmes "Hat Seller: unknown specialty family for item " + .@id + ".";
-			continue;
-		}
-		.@letter$ = .SpecFamilyCode$[.@family];
-		.@letter_index = strpos(.@alphabet$, .@letter$);
-		for (.@slot = 0; .@slot < 3; ++.@slot) {
-			if (.@loc & .@eqp[.@slot]) {
-				if (.@letter_index == -2)
-					.SpecHasNum[.@slot] = true;
-				else
-					.SpecHas[.@slot * 26 + .@letter_index] = true;
-				npcshopadditem "spec" + .@slot + "#" + .@letter$, .@id, .@price;
-			}
-		}
-	}
 
 	.@kept = 0;
 	for (.@i = 0; .@i < .EvtCount; ++.@i) {
@@ -928,11 +731,9 @@ OnInit:
 	for (.@slot = 0; .@slot < 3; ++.@slot) {
 		.HatMenu$[.@slot] = "";
 		.RentMenu$[.@slot] = "";
-		.SpecMenu$[.@slot] = "";
 		.EvtMenu$[.@slot] = "";
 		.HatLetterCount[.@slot] = 0;
 		.RentLetterCount[.@slot] = 0;
-		.SpecLetterCount[.@slot] = 0;
 		.EvtLetterCount[.@slot] = 0;
 		if (.HatHasNum[.@slot]) {
 			.HatLetter$[.@slot * 27] = "0";
@@ -944,15 +745,7 @@ OnInit:
 			.RentMenu$[.@slot] += "0-9:";
 			.RentLetterCount[.@slot] = 1;
 		}
-		for (.@family = 0; .@family < .SpecFamilyCount; ++.@family) {
-			.@letter$ = .SpecFamilyCode$[.@family];
-			.@letter_index = strpos(.@alphabet$, .@letter$);
-			if (.SpecHas[.@slot * 26 + .@letter_index]) {
-				.SpecLetter$[.@slot * 27 + .SpecLetterCount[.@slot]] = .@letter$;
-				.SpecMenu$[.@slot] += .SpecFamilyName$[.@family] + ":";
-				.SpecLetterCount[.@slot] += 1;
-			}
-		}
+
 		if (.EvtHasNum[.@slot]) {
 			.EvtLetter$[.@slot * 27] = "0";
 			.EvtMenu$[.@slot] += "0-9:";

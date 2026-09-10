@@ -1,7 +1,7 @@
 //===== Ragnarok Offline =====================================
 //= Black-Market Shield Seller
-//= Kaedra offers exact Renewal shields in Equipment and Specialty catalogs.
-//= Equipment browses by stripped client display name only; Specialty by exact family.
+//= Kaedra offers exact Renewal shields in Equipment catalogs.
+//= Equipment browses by stripped client display name only.
 //============================================================
 
 paramk,33,166,4	script	Kaedra#offline	4_F_ESTLOVELOY,{
@@ -22,7 +22,7 @@ paramk,33,166,4	script	Kaedra#offline	4_F_ESTLOVELOY,{
 	mes "[Kaedra]";
 	mes "Shields do not win battles. They make sure you live to finish them.";
 	mes "Pick one.";
-	.@cat = select("Equipment:Specialty:") - 1;
+	.@cat = select("Equipment:") - 1;
 	.@shop$ = "";
 	if (.@cat == 0) {
 		.@letter = select("A:B:C:D:E:F:G:H:I:J:K:L:M:O:P:R:S:T:U:V:W:") - 1;
@@ -47,17 +47,6 @@ paramk,33,166,4	script	Kaedra#offline	4_F_ESTLOVELOY,{
 		if (.@letter == 18) .@shop$ = "shd0#U";
 		if (.@letter == 19) .@shop$ = "shd0#V";
 		if (.@letter == 20) .@shop$ = "shd0#W";
-	}
-	if (.@cat == 1) {
-		.@letter = select("Automatic Equipment:Enhanced Time Guardian Equipment:Glacier Equipment:Gray Equipment:Illusion Equipment:Poenitentia Equipment:Royal Banquet / Royal Guard Shield:Upgrade Part Equipment:") - 1;
-		if (.@letter == 0) .@shop$ = "shd1#Automatic Equipment";
-		if (.@letter == 1) .@shop$ = "shd1#Enhanced Time Guardian Equipment";
-		if (.@letter == 2) .@shop$ = "shd1#Glacier Equipment";
-		if (.@letter == 3) .@shop$ = "shd1#Gray Equipment";
-		if (.@letter == 4) .@shop$ = "shd1#Illusion Equipment";
-		if (.@letter == 5) .@shop$ = "shd1#Poenitentia Equipment";
-		if (.@letter == 6) .@shop$ = "shd1#Royal Banquet / Royal Guard Shield";
-		if (.@letter == 7) .@shop$ = "shd1#Upgrade Part Equipment";
 	}
 	if (.@shop$ == "") { close; }
 	callfunc "F_BlackMarketDailyRemark", "Kaedra", $BlackMarketRateKaedra;
@@ -92,11 +81,3 @@ OnInit:
 -	pointshop	shd0#U	-1,#CASHPOINTS,28913:5400,28905:1300,28904:1300
 -	pointshop	shd0#V	-1,#CASHPOINTS,460143:2850,2115:4050
 -	pointshop	shd0#W	-1,#CASHPOINTS,2172:1800
--	pointshop	shd1#Automatic Equipment	-1,#CASHPOINTS,460015:3080
--	pointshop	shd1#Enhanced Time Guardian Equipment	-1,#CASHPOINTS,28914:2500
--	pointshop	shd1#Glacier Equipment	-1,#CASHPOINTS,460040:4980
--	pointshop	shd1#Gray Equipment	-1,#CASHPOINTS,2187:2800
--	pointshop	shd1#Illusion Equipment	-1,#CASHPOINTS,460017:4050,28922:3300,460004:2780,460014:2780,460018:5000
--	pointshop	shd1#Poenitentia Equipment	-1,#CASHPOINTS,460013:6735
--	pointshop	shd1#Royal Banquet / Royal Guard Shield	-1,#CASHPOINTS,28900:3000
--	pointshop	shd1#Upgrade Part Equipment	-1,#CASHPOINTS,2150:2500,2149:2500,2151:2500

@@ -6860,6 +6860,11 @@ static void mob_drop_ratio_adjust(void){
 				rate++;
 			}
 
+			// Normalize normal-monster card bases to Rate: 1; Miniboss and MVP rates stay database-defined.
+			if( id->type == IT_CARD && mob->get_bosstype() == BOSSTYPE_NONE ){
+				rate = 1;
+			}
+
 			// Treasure box drop rates [Skotlex]
 			if (util::vector_exists(mob->race2, RC2_TREASURE)) {
 				is_treasurechest = true;
