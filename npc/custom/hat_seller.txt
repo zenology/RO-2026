@@ -2,8 +2,7 @@
 //= Black-Market Hat Seller
 //===== Description: =========================================
 //= Sells reviewed iRO cash and formerly event-only headgear for Cash Points.
-//= Browse by Top / Middle / Lower, then 0-9 or A-Z using the live item name.
-//= Letter shops are filled in display-name order, then ID.
+//= Browse topology follows slot count and client identifiedDisplayName: direct under 30, ranges under 100, then A-Z and 0-9.
 //= Specialty stock is centralized at Madame Celestine.
 //============================================================
 
@@ -241,6 +240,37 @@ OnInit:
 	setarray .IroDisp$[580], "RMSC2012 2nd Runner Headgear","Racing Cap(Mechanic)","Racing Cap(Genetic)","Racing Cap(Guillotine Cross)","Racing Cap(Shadow Chaser)","Racing Cap(Warlock)","Racing Cap(Sorcerer)","Racing Cap(Rune Knight)","Racing Cap(Royal Guard)","Racing Cap(Archbishop)","Racing Cap(Sura)","Racing Cap(Ranger)","Racing Cap(Minstrel)","Racing Cap(Wanderer)","Racing Cap(Gunslinger)","Racing Cap(Ninja)","Racing Cap(Super Novice)","Racing Cap(Summoner)","Racing Cap(Star Gladiator)","Racing Cap(Soul Linker)";
 	setarray .IroDisp$[600], "Santa Claus Hat","Chewy Seaweed","Santa Claus Beard","23rd Anniversary Scarf","Nyar's Familiar","Sewer Warrior Hat","Issgard Helmet","Serpent Knight Helm","Nyar's Familiar-VG","Happy Balloon";
 	.IroCount = 610;
+	setarray .IroClientDisp$[0], "Deviruchi Hat","Tulip Hairpin","Tiger Mask","Neko Mimi","Takius Blindfold","Blank Eyes","2nd Anniversary Hat","Mystic Rose","Sheep Hat","Alice Doll","Hibiscus","Charming Ribbon","Crescent Helm","Corsair","Captain's Hat","Wandering Minstrel Hat","Green Ribbon","Rideword Hat","Flapping Angel Wings","Dress Hat";
+	setarray .IroClientDisp$[20], "Moonlight Flower Hat","Evolved Majestic Goat","Evolved Bunny Band","Evolved Drooping Kitty","Evolved Pipe","Evolved Pair of Red Ribbon","Evolved Blue Fish","Mini Propeller","Gray Deviruchi Hat","Brown Deviruchi Hat","Blue Drooping Kitty","Pink Beanie","Yellow Magician Hat","Elven Sunglasses","Triple Poring Hat","Flapping Angel Wings","Fantastic Wig","Water Lily Crown","Vane Hairpin","Vacation Hat";
+	setarray .IroClientDisp$[40], "Red Glasses","Vanilmirth Hat","Drooping Bunny","Kettle Hat","Dragon Skull","Ramen Hat","Whisper Mask","Tropical Fruit Hat","Little Angel Doll","Jumping Poring","Defolty Doll Hat","Glaris Doll Hat","Sorin Doll Hat","Telling Doll Hat","Bennit Doll Hat","W Doll Hat","Captain's Hat","Wickebine's Black Cat Ears","Gangster Scarf","Judge Hat";
+	setarray .IroClientDisp$[60], "Koneko Hat","Dark Randgris Helm","Gigantic Majestic Goat","Large Orc Hero Helm","Satanic Chain","Antique Smoking Pipe","Bunny Ears Hat","Fish Head Hat","Santa Poring Hat","Bell Ribbon","Twin Pom Santa Hat","Neko Mimi Kafra","Jasper Crest","Scuba Mask","Black Frame Glasses","Fish in Mouth","Filir Hat","White Snake Hat","Mask of Ifrit","Ears of Ifrit";
+	setarray .IroClientDisp$[80], "Gold Dragon Helm","Puppy Hat","Drooping Bunny","Bacsojin Doll Hat","Anubis Helm","Tiger King Doll Hat","Ice Cream Hat","Pirate's Pride","Necromancer's Hood","Ashura Fairy Hat","Shark Hat","Sting Hat","Pisces Diadem","Pisces Crown","Devil's Bone Helm","Baby Dragon Hat","Pirate Dagger","Coati Hat","Tucan Hat","Jaguar Hat";
+	setarray .IroClientDisp$[100], "Aries Diadem","Aries Crown","Crimson Rose","Taurus Crown","Crown of Deceit","Gemini Diadem","Gemini Crown","Well-Chewed Pencil","Cancer Diadem","Cancer Crown","Rune Hairband","Turtle Hat","Libra Diadem","Scorpio Crown","Scorpio Diadem","Majestic Goat Model","Red Wing Hat","Snowman Hat","Capricorn Crown","Capricorn Diadem";
+	setarray .IroClientDisp$[120], "Sloth Hat","Duneyrr Hat","Red Bunny Band","Chocolate Donut","Blue Arara Hat","Yellow Bunny Band","Green Bunny Band","Red Tailed Ribbon","Miracle Blue Rose","Demon's Glasses","Gambler's Seal","Fish Monster's Gill","Dragon Knight's Eyepatch","Crow Tengu Mask","Flight Hat","Octopus Hat","Red Pencil in Mouth","Wing Headphone","Kardui Ears","Flying Galapago";
+	setarray .IroClientDisp$[140], "Divine Angel Nurse Cap","Queen Anne's Revenge","Moon Eyepatch","Talking Parrot","Ancient Elven Ears","Stahl Von Kaiser 61 II","Toy Syringe","Pure White Marching Hat","Rosario Necklace","Elven Ears","Garuda Hat","Angel Wing Ears","Evil Wing Ears","Evil Marching Hat","Skull Cap","Witch Hat","Heart Wings Hairband","Fragment of Love","St Patrick's Hat","Yggdrasil Crown";
+	setarray .IroClientDisp$[160], "Mini Glasses","Cat Ear Beret","Red Pom Band","Black Devil's Mask","Black Frame Glasses","Black Musang Hat","Long Tongue","Ignis Cap","Deviruchi Headphones","Witch's Pumpkin Hat","Pegasus Wing Ears","Antler Fedora","CD in Mouth","Handkerchief in Mouth","Drooping Pope","Hexagon Spectacles","Leek in Mouth","Syringe in Mouth","Magical Booster","MVP Basketball Hat";
+	setarray .IroClientDisp$[180], "Chilly Breath","Blood Sucker","Goaltender Mask","Mask of Nero","Imperial Feather","Hat of Girl","Banshee Master Kiss","Pink Angelring Bubble","Baron's Evil Eye","Palace Guard Cap","Aqua Bunny Band","Piamette's Brown Ears","Bear Balloon","LoveLove Balloon","Mechanical Plant Hat","Memory of Lover","Pink Poo Poo Hat","Jinn Marin Balloon","Circlet of Survival","Protect Feathers";
+	setarray .IroClientDisp$[200], "Celestial Woman's Flower","Bio Protector","Mask of Hero","Robo Eyes","Angel Spirit","Happy Balloon","Night Sparrow Hat","Sting Silk Ribbon","Red Baby Dragon","Cylinder Hairband","Chick Hat","Magic Eyes","Spirit of Green Maiden","Strawberry in Mouth","Seraphim Coronet","Orbs of Survival","Dolor Thanatos Mask","Lunar Rainbow","Scuba Mask","Catharina Von Brad 60th";
+	setarray .IroClientDisp$[220], "Guardian Processor","Magician Knit Hat","Sitting Pope(Casual)","New Wave Sunglasses","Rosario Necklace","Royal Guard Necklace","Spell Circuit","General's Helm","Gold Fish Head Hat","Gigant Snake's Breath","Happy Flapping Angel Wings","Siegfried's Helmet","Classical Feather Hat","Giant Tree's Young Leaves","Dog Officer","Heart Card in Mouth","Amistr Beret","Book of Soyga","Feather of Seraphim","Demon's Hand";
+	setarray .IroClientDisp$[240], "Safety Glasses","Taurus Hat","Phoenix Crown","Engineer Cap","Striking Hat","Floating Tai-Chi Spheres","Protect Cloth","Experimental Goat Cap","Eyes of Illusion","Work Cap","Black Feather","King Of Spirit Circlet","Little Garden","Star Eyepatch","Injured Soldier's Eyepatch","Heavenly Order","Crown of Saint","Diabolus Wing","Citrus Ribbon","Eight Trigrams Seal";
+	setarray .IroClientDisp$[260], "Mob Scarf","Victory Wing Ears","Officer's Hat","Ignis Cap Type K","Drooping Thanatos's Dolor","Stripe Hat","Great Magician's Ceremonial Crown","Scorpio Celestial Coronet","Sagittarius Celestial Coronet","Ghost Whisper","Clockwise","Altair Hat","EXP Advisor","Battle Processor","Demon's Familiar","Deep Blue Sunglasses","Guardian Helm","Phantom Beast Ears","Ear of Spirit","Ears of Abyss";
+	setarray .IroClientDisp$[280], "Crow Tengu Mask","Purified Pigeon","Smiling Eyes","Disk in Mouth","Einherjar's Mantle","Tyrant of Earth","Book of Sorcery","Sacred Lapel","Ghost Fire","Loyal Servant of Morroc","Black Veil","Libra Diadem","Heritage Symbol of the Orcs","Duel Dragon Hat","Splash Cat Hat","Squirrel Ear Hood (Albino)","Two Tone Cap","Chic Peony","Bobcat Knit Hat (White)","Invincible Crest Hat";
+	setarray .IroClientDisp$[300], "Khalitzburg Knight White Helm","The Brandishing","Striped Ribbon Hat","Full Faith Crown","Snake Queen Crown","Ancient Morocc Noble Jewelry","Divine Protect Shield","Exiled Ninja's Eyes","Lord of Royals","Old Camouflage Scarf","Consecrate Fides Aureola","Twinhead Dragon Scale","Siege Army Cap","Siege Kafra Band","Siege Sweet Gent","Siege Zoro Mask","Star-Spangled Bandana","Merica Hat","Loki's Assassin Mask","Bra Hat";
+	setarray .IroClientDisp$[320], "Cheering Whistle","Rainbow Long Octopus","Drooping Panda","Red Flower Hat","Deviruchi Balloon","Super Cute Doll Hat","Very Cute Doll Hat","Refined Lunatic Hat","Happy Parrot","Crown of Saint","Jinn Poring Balloon","Happy Parrot","Black Veil","Lady's Ribbon","Party Balloon","Sweets Bonbon","Egg Minihat","Snow Flower","Lunatic on Shoulder","USA Flag Hat";
+	setarray .IroClientDisp$[340], "Grey Wolf Cub in Mouth","True Gangster Scarf","Von Blood Brothers","Gangster Tactician Headset","Special Garden of Eden","Rekenber's Celestial Hat","Disciple of Bijou","Queen Bee Jeweled Crown","Robotic Valkyrie Hairband","Future Yoyo King Hat","Boitata Cap","Future Wolf King Hat","Kiel Successor Doll","Umbala Utan Helmet","Bankrupt Headgear","Future Gryphon Hat","Eddga Follower Doll","Focused Cat Paw Physical Hat","Focused Cat Paw Magical Hat","Bone Detardeurus Wing";
+	setarray .IroClientDisp$[360], "Angelgolt's Wing","Vampire Von Blood","Hero Follower Mask","OS Follower Mask","Poenitentia Follower Mask","Thanatos Follower Mask","Kitsune Gaze","Ancient Morroc Noble Jewelry-LT","Little Garden-LT","Floating Ball-LT","Ranger's Binoculars","Moon Follower Eyepatch","Moon God Lapel","Special Bear Balloon","Constellation Orb","Biosphere Scarf","Frosty Breath","Buffalo Bandit Scarf","Plain Black Magician Hat","Night Sparrow Hat";
+	setarray .IroClientDisp$[380], "Goral Crown","Trial Diadem","Jade Crown","Spinel Diadem","Bull Crown","Taurus Diadem","Celestial Jewel Crown","Libra Crown","Saint Crown","Lion Crown","Goat Crown","Twins Crown","Time Dimensions Rune Crown (Dragon Knight)","Time Dimensions Rune Crown (Imperial Guard)","Time Dimensions Rune Crown (Meister)","Time Dimensions Rune Crown (Biolo)","Time Dimensions Rune Crown (Shadow Cross)","Time Dimensions Rune Crown (Abyss Chaser)","Time Dimensions Rune Crown (Arch Mage)","Time Dimensions Rune Crown (Elemental Master)";
+	setarray .IroClientDisp$[400], "Time Dimensions Rune Crown (Cardinal)","Time Dimensions Rune Crown (Inquisitor)","Time Dimensions Rune Crown (Windhawk)","Time Dimensions Rune Crown (Troubadour & Trouvere)","Time Dimensions Rune Crown (Shinkiro & Shiranui)","Time Dimensions Rune Crown (Night Watch)","Time Dimensions Rune Crown (Sky Emperor)","Time Dimensions Rune Crown (Soul Ascetic)","Time Dimensions Rune Crown (Hyper Novice)","Time Dimensions Rune Crown (Spirit Handler)","Issgard Warrior Crown","Issgard Magician Crown","Issgard Ranger Crown","Thanos' Warrior Helmet","Thanos' Warrior Helmet-LT","Thanos Shooter Helmet","Thanos Shooter Helmet-LT","Thanos Magic Helmet-LT","Thanos Magic Helmet","Thanos Fighter Helmet";
+	setarray .IroClientDisp$[420], "Thanos Fighter Helmet-LT","Helm of Faith(Warlock)","Helm of Faith II(Warlock)","Helm of Faith(Sura)","Helm of Faith II(Sura)","Helm of Faith(Archbishop)","Helm of Faith II(Archbishop)","Helm of Faith(Shadow Chaser)","Helm of Faith II(Shadow Chaser)","Helm of Faith(Ranger)","Helm of Faith II(Ranger)","Helm of Faith(Royal Guard)","Helm of Faith II(Royal Guard)","Helm of Faith(Guillotine Cross)","Helm of Faith II(Guillotine Cross)","Helm of Faith(Sorcerer)","Helm of Faith II(Sorcerer)","Helm of Faith(Rune Knight)","Helm of Faith II(Rune Knight)","Helm of Faith(Minstrel&Wanderer)";
+	setarray .IroClientDisp$[440], "Helm of Faith II(Minstrel&Wanderer)","Helm of Faith(Mechanic)","Helm of Faith II(Mechanic)","Helm of Faith(Genetic)","Helm of Faith II(Genetic)","Helm of Faith(Kagerou&Oboro)","Helm of Faith II(Kagerou&Oboro)","Helm of Faith(Rebellion)","Helm of Faith II(Rebellion)","Helm of Faith(Soul Reaper)","Helm of Faith II(Soul Reaper)","Helm of Faith(Star Emperor)","Helm of Faith II(Star Emperor)","Helm of Faith(Summoner)","Helm of Faith II(Summoner)","Herosria Helm","Herosria Apple of Archer","Herosria Sorcerer's Hat","Herosria Beret","Herosria Biretta";
+	setarray .IroClientDisp$[460], "Confession Courage Crown","Confession Domineering Crown","Penance Crown","Penance Glory Crown","Poenetentia Spirit Crown","Poenetentia Willful Crown","Yorscalp Executioner's Circlet","Yorscalp Crown of Judgment","Silver Stardust Crown","Scarlet Stardust Crown","Violet Stardust Crown","Songkok","Magnolia Hat","Balloon Hat","Hunting Cap","Twin Pom Blue Santa Hat","Snake Head","Valentine Hat","Upgrade Elephant Hat","Assassin Mask";
+	setarray .IroClientDisp$[480], "Crunch Toast","Tiara","Crown","Opera Mask","Welding Mask","Binoculars","Hairband","Bunny Band","Golden Gear","Majestic Goat","Sakkat","Baby Pacifier","Romantic White Flower","Spiky Band","Dark Blinkers","Blinkers","Chef Hat","Teddybear Hat","Brown Beanie","Blue Beanie";
+	setarray .IroClientDisp$[500], "Flower Crown","Cap of Blindness","Ayothaya King's Hat","Fisherman Hat","Arc Angeling Hat","Champion Wreath","Mistress Crown","Guildsman Recruiter Hat","Party Recruiter Hat","Battlefield Recruiter Hat","Friend Recruiter Hat","Gf Recruiter Hat","Helm of Darkness","Boy's Cap","Lord Kaho's Horn","Hat of the Sun God","Valkyrie Helm","Cyclop's Eye","Spore Hat","Raccoon Hat";
+	setarray .IroClientDisp$[520], "Blush","Fashionable Glasses","Blue Fish","Lazy Smokie","Alarm Mask","Renown Detective's Cap","Zealotus Mask","Elephant Hat","Note Headphone","Chinese Crown","Feather Beret","Magistrate Hat","Ayam","Censor Bar","Laurel Wreath","Twin Red Ribbon","Black Ribbon","Yellow Ribbon","Pink Ribbon","Red Ribbon";
+	setarray .IroClientDisp$[540], "Orange Ribbon","White Ribbon","Coppola","Emperor's Laurel Crown","Red Magician Hat","Gray Magician Hat","Brown Magician Hat","Blue Magician Hat","Shafka","Devilring Hat","Soulless Ring","Soul Wing","Afro Wig","Dokkaebi's Wig","Happy Wig","Marvelous Wig","Shiny Wig","Elephant Hat","Phoenix Crown","Tongue Mask";
+	setarray .IroClientDisp$[560], "Poporing Hat","Selendang","Blush of Groom","Battle Processor","Bondage Necklace","RWC Anniversary Bread Envelope","Silver Dragon Helm","Copper Dragon Helm","RWC Statue(Winner)","RWC Statue(2nd)","RWC Statue(3rd)","RCC2013 1st Crown","RCC2013 2nd Crown","RCC2013 3rd Crown","RWC Champ Crown(1st)","RWC Champ Crown(2nd)","RWC Champ Crown(3rd)","RWC Crown of Victory(8th)","RMSC2012 Champion Headgear","RMSC2012 1st Runner Headgear";
+	setarray .IroClientDisp$[580], "RMSC2012 2nd Runner Headgear","Racing Cap(Mechanic)","Racing Cap(Genetic)","Racing Cap(Guillotine Cross)","Racing Cap(Shadow Chaser)","Racing Cap(Warlock)","Racing Cap(Sorcerer)","Racing Cap(Rune Knight)","Racing Cap(Royal Guard)","Racing Cap(Archbishop)","Racing Cap(Sura)","Racing Cap(Ranger)","Racing Cap(Minstrel)","Racing Cap(Wanderer)","Racing Cap(Gunslinger)","Racing Cap(Ninja)","Racing Cap(Super Novice)","Racing Cap(Summoner)","Racing Cap(Star Gladiator)","Racing Cap(Soul Linker)";
+	setarray .IroClientDisp$[600], "Santa Claus Hat","Chewy Seaweed","Santa Claus Beard","23rd Anniversary Scarf","Nyar's Familiar","Sewer Warrior Hat","Issgard Helmet","Serpent Knight Helm","Nyar's Familiar-VG","Happy Balloon";
 	// Generated by KB tools/audit_harlan_hat_prices.py from the confirmed pricing taxonomy.
 	// Generated by KB tools/audit_harlan_hat_prices.py from the condition-aware pricing taxonomy.
 	// Confirmed endgame headgear families. Families already sold by the imported Cash Mall exchange (Good and Evil and Furious) stay out of Harlan.
@@ -255,8 +285,14 @@ OnInit:
 	deletearray .HatLetter$[0], 81;
 	deletearray .HatMenu$[0], 3;
 	deletearray .HatLetterCount[0], 3;
+	deletearray .HatSlotCount[0], 3;
+	deletearray .HatMode[0], 3;
 
 	for (.@slot = 0; .@slot < 3; ++.@slot) {
+		npcshopdelitem "hat" + .@slot + "#ALL", 501;
+		npcshopdelitem "hat" + .@slot + "#AH", 501;
+		npcshopdelitem "hat" + .@slot + "#IP", 501;
+		npcshopdelitem "hat" + .@slot + "#QZ9", 501;
 		npcshopdelitem "hat" + .@slot + "#0", 501;
 		for (.@i = 0; .@i < 26; ++.@i) {
 			npcshopdelitem "hat" + .@slot + "#" + charat(.@alphabet$, .@i), 501;
@@ -293,7 +329,7 @@ OnInit:
 		// repaired IroId arrays are not guaranteed to retain the historical
 		// IroDisp$ positional alignment; using that stale position can put an
 		// item into the wrong letter drawer.
-		.@disp$ = .@name$;
+		.@disp$ = .IroClientDisp$[.@i];
 		.IroDisp$[.@kept] = .@disp$;
 		.@hatname$[.@kept] = strtolower(.@disp$);
 		.@kept += 1;
@@ -322,6 +358,22 @@ OnInit:
 		}
 	}
 	for (.@i = 0; .@i < .IroCount; ++.@i) {
+		.@loc = getiteminfo(.IroId[.@i], ITEMINFO_LOCATIONS);
+		for (.@slot = 0; .@slot < 3; ++.@slot) {
+			if (.@loc & .@eqp[.@slot])
+				.HatSlotCount[.@slot] += 1;
+		}
+	}
+	for (.@slot = 0; .@slot < 3; ++.@slot) {
+		if (.HatSlotCount[.@slot] < 30)
+			.HatMode[.@slot] = 0;
+		else if (.HatSlotCount[.@slot] < 100)
+			.HatMode[.@slot] = 1;
+		else
+			.HatMode[.@slot] = 2;
+	}
+
+	for (.@i = 0; .@i < .IroCount; ++.@i) {
 		.@id = .IroId[.@i];
 		.@price = .IroPrice[.@i];
 		.@name$ = .IroDisp$[.@i];
@@ -339,11 +391,23 @@ OnInit:
 		}
 		for (.@slot = 0; .@slot < 3; ++.@slot) {
 			if (.@loc & .@eqp[.@slot]) {
-				if (.@letter_index == -2)
-					.HatHasNum[.@slot] = true;
-				else
-					.HatHas[.@slot * 26 + .@letter_index] = true;
-				npcshopadditem "hat" + .@slot + "#" + .@letter$, .@id, .@price;
+				if (.HatMode[.@slot] == 0) {
+					.@drawer$ = "ALL";
+				} else if (.HatMode[.@slot] == 1) {
+					if (.@letter_index >= 0 && .@letter_index <= 7)
+						.@drawer$ = "AH";
+					else if (.@letter_index >= 8 && .@letter_index <= 15)
+						.@drawer$ = "IP";
+					else
+						.@drawer$ = "QZ9";
+				} else {
+					.@drawer$ = .@letter$;
+					if (.@letter_index == -2)
+						.HatHasNum[.@slot] = true;
+					else
+						.HatHas[.@slot * 26 + .@letter_index] = true;
+				}
+				npcshopadditem "hat" + .@slot + "#" + .@drawer$, .@id, .@price;
 			}
 		}
 	}
@@ -351,17 +415,30 @@ OnInit:
 	for (.@slot = 0; .@slot < 3; ++.@slot) {
 		.HatMenu$[.@slot] = "";
 		.HatLetterCount[.@slot] = 0;
-		if (.HatHasNum[.@slot]) {
-			.HatLetter$[.@slot * 27] = "0";
-			.HatMenu$[.@slot] += "0-9:";
+		if (.HatMode[.@slot] == 0) {
+			.HatLetter$[.@slot * 27] = "ALL";
+			.HatMenu$[.@slot] = "All items";
 			.HatLetterCount[.@slot] = 1;
-		}
-		for (.@i = 0; .@i < 26; ++.@i) {
-			if (.HatHas[.@slot * 26 + .@i]) {
-				.@letter$ = charat(.@alphabet$, .@i);
+		} else if (.HatMode[.@slot] == 1) {
+			.HatLetter$[.@slot * 27] = "AH";
+			.HatLetter$[.@slot * 27 + 1] = "IP";
+			.HatLetter$[.@slot * 27 + 2] = "QZ9";
+			.HatMenu$[.@slot] = "A-H:I-P:Q-Z / 0-9";
+			.HatLetterCount[.@slot] = 3;
+		} else {
+			for (.@i = 0; .@i < 26; ++.@i) {
+				if (.HatHas[.@slot * 26 + .@i]) {
+					.@letter$ = charat(.@alphabet$, .@i);
+					.@n = .HatLetterCount[.@slot];
+					.HatLetter$[.@slot * 27 + .@n] = .@letter$;
+					.HatMenu$[.@slot] += .@letter$ + ":";
+					.HatLetterCount[.@slot] = .@n + 1;
+				}
+			}
+			if (.HatHasNum[.@slot]) {
 				.@n = .HatLetterCount[.@slot];
-				.HatLetter$[.@slot * 27 + .@n] = .@letter$;
-				.HatMenu$[.@slot] += .@letter$ + ":";
+				.HatLetter$[.@slot * 27 + .@n] = "0";
+				.HatMenu$[.@slot] += "0-9";
 				.HatLetterCount[.@slot] = .@n + 1;
 			}
 		}
