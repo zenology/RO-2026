@@ -95,3 +95,4 @@ Footer:
     - Path: db/import/item_db_iro_weapons.yml
     - Path: db/import/item_db_iro_seraphine_combo_partners.yml
     - Path: db/import/item_db_iro_shadow_gear.yml
+    - Path: db/import/item_db_specialty_set_a.yml
