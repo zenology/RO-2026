@@ -7,10 +7,8 @@
 paramk,37,163,2	script	Mordain#offline	4_EP21_GALAXIA_A,{
 	mes "[Mordain]";
 	mes "Body armor, sorted for the discerning knight.";
-	.@cat = select("Equipment:") - 1;
 	.@letter = -1;
 	.@shop$ = "";
-	if (.@cat == 0) {
 		.@letter = select("A:B:C:D:E:F:G:H:I:K:L:M:N:O:P:R:S:T:U:V:W:Y:") - 1;
 		if (.@letter == 0) .@shop$ = "arm0#A";
 		if (.@letter == 1) .@shop$ = "arm0#B";
@@ -34,8 +32,7 @@ paramk,37,163,2	script	Mordain#offline	4_EP21_GALAXIA_A,{
 		if (.@letter == 19) .@shop$ = "arm0#V";
 		if (.@letter == 20) .@shop$ = "arm0#W";
 		if (.@letter == 21) .@shop$ = "arm0#Y";
-	}
-	if (.@shop$ == "") { close; }
+		if (.@shop$ == "") { close; }
 	callfunc "F_BlackMarketDailyRemark", "Mordain", $BlackMarketRateMordain;
 	close2;
 	callblackmarketshop .@shop$, 1, $BlackMarketRateMordain;

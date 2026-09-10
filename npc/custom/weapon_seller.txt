@@ -1,8 +1,7 @@
 //===== Ragnarok Offline =====================================
 //= Black-Market Arms Importer
 //= Soren imports proven iRO weapons from every direction.
-//= Browse is weapon type, then Equipment, then
-//= 0-9 or A-Z by stripped client identifiedDisplayName only, then ID.
+//= Browse is weapon type, then 0-9 or A-Z by stripped client identifiedDisplayName only, then ID.
 //= Every SKU uses the audited Cash Point price. Missing client assets do not
 //= remove stock; this pass changes server data only.
 //============================================================
@@ -32,8 +31,6 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 	.@shop$ = "";
 	.@type = select("Book:Bow:Dagger:Gatling Gun:Grenade Launcher:Huuma Shuriken:Instrument:Katar:Knuckle:Mace:One-Handed Axe:One-Handed Spear:One-Handed Sword:Revolver:Rifle:Shotgun:Staff:Two-Handed Axe:Two-Handed Spear:Two-Handed Staff:Two-Handed Sword:Whip:") - 1;
 	if (.@type == 0) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("B:C:D:E:F:O:P:S:V:") - 1;
 			if (.@letter == 0) .@shop$ = "wep0_0#B";
 			else if (.@letter == 1) .@shop$ = "wep0_0#C";
@@ -44,11 +41,8 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 			else if (.@letter == 6) .@shop$ = "wep0_0#P";
 			else if (.@letter == 7) .@shop$ = "wep0_0#S";
 			else if (.@letter == 8) .@shop$ = "wep0_0#V";
-		}
-	}
+			}
 	if (.@type == 1) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("A:B:C:D:E:F:G:I:M:P:S:T:V:") - 1;
 			if (.@letter == 0) .@shop$ = "wep1_0#A";
 			else if (.@letter == 1) .@shop$ = "wep1_0#B";
@@ -63,11 +57,8 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 			else if (.@letter == 10) .@shop$ = "wep1_0#S";
 			else if (.@letter == 11) .@shop$ = "wep1_0#T";
 			else if (.@letter == 12) .@shop$ = "wep1_0#V";
-		}
-	}
+			}
 	if (.@type == 2) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("A:B:C:D:E:F:G:H:I:J:K:M:R:S:T:U:V:W:") - 1;
 			if (.@letter == 0) .@shop$ = "wep2_0#A";
 			else if (.@letter == 1) .@shop$ = "wep2_0#B";
@@ -87,42 +78,30 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 			else if (.@letter == 15) .@shop$ = "wep2_0#U";
 			else if (.@letter == 16) .@shop$ = "wep2_0#V";
 			else if (.@letter == 17) .@shop$ = "wep2_0#W";
-		}
-	}
+			}
 	if (.@type == 3) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("C:F:L:R:") - 1;
 			if (.@letter == 0) .@shop$ = "wep3_0#C";
 			else if (.@letter == 1) .@shop$ = "wep3_0#F";
 			else if (.@letter == 2) .@shop$ = "wep3_0#L";
 			else if (.@letter == 3) .@shop$ = "wep3_0#R";
-		}
-	}
+			}
 	if (.@type == 4) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("C:D:J:L:") - 1;
 			if (.@letter == 0) .@shop$ = "wep4_0#C";
 			else if (.@letter == 1) .@shop$ = "wep4_0#D";
 			else if (.@letter == 2) .@shop$ = "wep4_0#J";
 			else if (.@letter == 3) .@shop$ = "wep4_0#L";
-		}
-	}
+			}
 	if (.@type == 5) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("D:F:H:V:W:") - 1;
 			if (.@letter == 0) .@shop$ = "wep5_0#D";
 			else if (.@letter == 1) .@shop$ = "wep5_0#F";
 			else if (.@letter == 2) .@shop$ = "wep5_0#H";
 			else if (.@letter == 3) .@shop$ = "wep5_0#V";
 			else if (.@letter == 4) .@shop$ = "wep5_0#W";
-		}
-	}
+			}
 	if (.@type == 6) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("A:B:C:F:G:H:L:N:P:V:") - 1;
 			if (.@letter == 0) .@shop$ = "wep6_0#A";
 			else if (.@letter == 1) .@shop$ = "wep6_0#B";
@@ -134,11 +113,8 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 			else if (.@letter == 7) .@shop$ = "wep6_0#N";
 			else if (.@letter == 8) .@shop$ = "wep6_0#P";
 			else if (.@letter == 9) .@shop$ = "wep6_0#V";
-		}
-	}
+			}
 	if (.@type == 7) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("A:B:C:D:F:G:I:J:K:S:T:V:W:") - 1;
 			if (.@letter == 0) .@shop$ = "wep7_0#A";
 			else if (.@letter == 1) .@shop$ = "wep7_0#B";
@@ -153,11 +129,8 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 			else if (.@letter == 10) .@shop$ = "wep7_0#T";
 			else if (.@letter == 11) .@shop$ = "wep7_0#V";
 			else if (.@letter == 12) .@shop$ = "wep7_0#W";
-		}
-	}
+			}
 	if (.@type == 8) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("B:D:F:H:I:S:V:") - 1;
 			if (.@letter == 0) .@shop$ = "wep8_0#B";
 			else if (.@letter == 1) .@shop$ = "wep8_0#D";
@@ -166,11 +139,8 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 			else if (.@letter == 4) .@shop$ = "wep8_0#I";
 			else if (.@letter == 5) .@shop$ = "wep8_0#S";
 			else if (.@letter == 6) .@shop$ = "wep8_0#V";
-		}
-	}
+			}
 	if (.@type == 9) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("B:C:E:F:G:L:N:P:Q:R:S:V:") - 1;
 			if (.@letter == 0) .@shop$ = "wep9_0#B";
 			else if (.@letter == 1) .@shop$ = "wep9_0#C";
@@ -184,22 +154,16 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 			else if (.@letter == 9) .@shop$ = "wep9_0#R";
 			else if (.@letter == 10) .@shop$ = "wep9_0#S";
 			else if (.@letter == 11) .@shop$ = "wep9_0#V";
-		}
-	}
+			}
 	if (.@type == 10) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("D:G:P:S:V:") - 1;
 			if (.@letter == 0) .@shop$ = "wep10_0#D";
 			else if (.@letter == 1) .@shop$ = "wep10_0#G";
 			else if (.@letter == 2) .@shop$ = "wep10_0#P";
 			else if (.@letter == 3) .@shop$ = "wep10_0#S";
 			else if (.@letter == 4) .@shop$ = "wep10_0#V";
-		}
-	}
+			}
 	if (.@type == 11) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("B:C:F:G:H:I:L:M:P:T:V:") - 1;
 			if (.@letter == 0) .@shop$ = "wep11_0#B";
 			else if (.@letter == 1) .@shop$ = "wep11_0#C";
@@ -212,11 +176,8 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 			else if (.@letter == 8) .@shop$ = "wep11_0#P";
 			else if (.@letter == 9) .@shop$ = "wep11_0#T";
 			else if (.@letter == 10) .@shop$ = "wep11_0#V";
-		}
-	}
+			}
 	if (.@type == 12) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("B:C:D:E:F:G:H:I:O:P:R:S:T:V:") - 1;
 			if (.@letter == 0) .@shop$ = "wep12_0#B";
 			else if (.@letter == 1) .@shop$ = "wep12_0#C";
@@ -232,42 +193,30 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 			else if (.@letter == 11) .@shop$ = "wep12_0#S";
 			else if (.@letter == 12) .@shop$ = "wep12_0#T";
 			else if (.@letter == 13) .@shop$ = "wep12_0#V";
-		}
-	}
+			}
 	if (.@type == 13) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("C:D:V:W:") - 1;
 			if (.@letter == 0) .@shop$ = "wep13_0#C";
 			else if (.@letter == 1) .@shop$ = "wep13_0#D";
 			else if (.@letter == 2) .@shop$ = "wep13_0#V";
 			else if (.@letter == 3) .@shop$ = "wep13_0#W";
-		}
-	}
+			}
 	if (.@type == 14) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("C:F:L:S:T:") - 1;
 			if (.@letter == 0) .@shop$ = "wep14_0#C";
 			else if (.@letter == 1) .@shop$ = "wep14_0#F";
 			else if (.@letter == 2) .@shop$ = "wep14_0#L";
 			else if (.@letter == 3) .@shop$ = "wep14_0#S";
 			else if (.@letter == 4) .@shop$ = "wep14_0#T";
-		}
-	}
+			}
 	if (.@type == 15) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("C:G:L:O:") - 1;
 			if (.@letter == 0) .@shop$ = "wep15_0#C";
 			else if (.@letter == 1) .@shop$ = "wep15_0#G";
 			else if (.@letter == 2) .@shop$ = "wep15_0#L";
 			else if (.@letter == 3) .@shop$ = "wep15_0#O";
-		}
-	}
+			}
 	if (.@type == 16) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("A:C:D:E:F:G:H:L:M:R:S:T:V:W:") - 1;
 			if (.@letter == 0) .@shop$ = "wep16_0#A";
 			else if (.@letter == 1) .@shop$ = "wep16_0#C";
@@ -283,11 +232,8 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 			else if (.@letter == 11) .@shop$ = "wep16_0#T";
 			else if (.@letter == 12) .@shop$ = "wep16_0#V";
 			else if (.@letter == 13) .@shop$ = "wep16_0#W";
-		}
-	}
+			}
 	if (.@type == 17) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("B:C:D:E:F:G:H:M:T:V:Y:") - 1;
 			if (.@letter == 0) .@shop$ = "wep17_0#B";
 			else if (.@letter == 1) .@shop$ = "wep17_0#C";
@@ -300,11 +246,8 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 			else if (.@letter == 8) .@shop$ = "wep17_0#T";
 			else if (.@letter == 9) .@shop$ = "wep17_0#V";
 			else if (.@letter == 10) .@shop$ = "wep17_0#Y";
-		}
-	}
+			}
 	if (.@type == 18) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("B:C:F:G:H:I:J:L:R:S:V:Z:") - 1;
 			if (.@letter == 0) .@shop$ = "wep18_0#B";
 			else if (.@letter == 1) .@shop$ = "wep18_0#C";
@@ -318,11 +261,8 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 			else if (.@letter == 9) .@shop$ = "wep18_0#S";
 			else if (.@letter == 10) .@shop$ = "wep18_0#V";
 			else if (.@letter == 11) .@shop$ = "wep18_0#Z";
-		}
-	}
+			}
 	if (.@type == 19) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("A:B:C:D:F:G:H:I:K:P:S:V:W:") - 1;
 			if (.@letter == 0) .@shop$ = "wep19_0#A";
 			else if (.@letter == 1) .@shop$ = "wep19_0#B";
@@ -337,11 +277,8 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 			else if (.@letter == 10) .@shop$ = "wep19_0#S";
 			else if (.@letter == 11) .@shop$ = "wep19_0#V";
 			else if (.@letter == 12) .@shop$ = "wep19_0#W";
-		}
-	}
+			}
 	if (.@type == 20) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("A:B:C:D:E:F:G:H:K:L:M:R:S:T:V:") - 1;
 			if (.@letter == 0) .@shop$ = "wep20_0#A";
 			else if (.@letter == 1) .@shop$ = "wep20_0#B";
@@ -358,11 +295,8 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 			else if (.@letter == 12) .@shop$ = "wep20_0#S";
 			else if (.@letter == 13) .@shop$ = "wep20_0#T";
 			else if (.@letter == 14) .@shop$ = "wep20_0#V";
-		}
-	}
+			}
 	if (.@type == 21) {
-		.@cat = select("Equipment:") - 1;
-		if (.@cat == 0) {
 			.@letter = select("A:C:F:H:L:P:R:S:T:V:") - 1;
 			if (.@letter == 0) .@shop$ = "wep21_0#A";
 			else if (.@letter == 1) .@shop$ = "wep21_0#C";
@@ -374,8 +308,7 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 			else if (.@letter == 7) .@shop$ = "wep21_0#S";
 			else if (.@letter == 8) .@shop$ = "wep21_0#T";
 			else if (.@letter == 9) .@shop$ = "wep21_0#V";
-		}
-	}
+			}
 	if (.@shop$ == "") { mes "[Soren]"; mes "That crate is empty. Try another drawer."; close; }
 	callfunc "F_BlackMarketDailyRemark", "Soren", $BlackMarketRateSoren;
 	close2;

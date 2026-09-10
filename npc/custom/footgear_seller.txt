@@ -9,9 +9,7 @@ paramk,23,185,4	script	Tess#offline	4_4JOB_MAURA,{
 	mes "Everyone expected me to learn his trade. I never wanted to spend my life counting cards behind his table.";
 	mes "So I chose leather, thread, and a proper sole. I make shoes, repair them, and send people back onto the road.";
 	mes "If you want something for your feet, speak to me. If you want a card appraised, ask my father.";
-	.@cat = select("Equipment:") - 1;
 	.@shop$ = "";
-	if (.@cat == 0) {
 		.@key = select("A:B:C:D:E:F:G:H:I:J:L:M:N:P:R:S:T:U:V:W:Y:") - 1;
 		if (.@key == 0) .@shop$ = "ftr0#A";
 		if (.@key == 1) .@shop$ = "ftr0#B";
@@ -34,8 +32,7 @@ paramk,23,185,4	script	Tess#offline	4_4JOB_MAURA,{
 		if (.@key == 18) .@shop$ = "ftr0#V";
 		if (.@key == 19) .@shop$ = "ftr0#W";
 		if (.@key == 20) .@shop$ = "ftr0#Y";
-	}
-	if (.@shop$ == "") close;
+		if (.@shop$ == "") close;
 	callfunc "F_BlackMarketDailyRemark", "Tess", $BlackMarketRateTess;
 	close2;
 	callblackmarketshop .@shop$, 1, $BlackMarketRateTess;

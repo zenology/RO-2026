@@ -18,8 +18,6 @@ paramk,23,160,4	script	Lady Seraphine Vellmont#offline	4_EP16_EGEO,{
 	.@slot = select("Accessory:Left Accessory:Right Accessory") - 1;
 	.@shop$ = "";
 	if (.@slot == 0) {
-		.@cat = select("Equipment") - 1;
-		if (.@cat == 0) {
 			.@letter = select("0:A:B:C:D:E:F:G:H:I:J:K:L:M:N:O:P:R:S:T:U:V:W") - 1;
 			if (.@letter == 0) .@shop$ = "acc0#0";
 			if (.@letter == 1) .@shop$ = "acc0#A";
@@ -44,11 +42,8 @@ paramk,23,160,4	script	Lady Seraphine Vellmont#offline	4_EP16_EGEO,{
 			if (.@letter == 20) .@shop$ = "acc0#U";
 			if (.@letter == 21) .@shop$ = "acc0#V";
 			if (.@letter == 22) .@shop$ = "acc0#W";
-		}
-	}
+			}
 	if (.@slot == 1) {
-		.@cat = select("Equipment") - 1;
-		if (.@cat == 0) {
 			.@letter = select("A:B:C:D:E:F:G:H:I:L:M:N:O:P:R:S:V:Y") - 1;
 			if (.@letter == 0) .@shop$ = "acl0#A";
 			if (.@letter == 1) .@shop$ = "acl0#B";
@@ -68,11 +63,8 @@ paramk,23,160,4	script	Lady Seraphine Vellmont#offline	4_EP16_EGEO,{
 			if (.@letter == 15) .@shop$ = "acl0#S";
 			if (.@letter == 16) .@shop$ = "acl0#V";
 			if (.@letter == 17) .@shop$ = "acl0#Y";
-		}
-	}
+			}
 	if (.@slot == 2) {
-		.@cat = select("Equipment") - 1;
-		if (.@cat == 0) {
 			.@letter = select("A:B:C:D:F:G:H:L:M:N:R:S:T:U:V:W") - 1;
 			if (.@letter == 0) .@shop$ = "acr0#A";
 			if (.@letter == 1) .@shop$ = "acr0#B";
@@ -90,8 +82,7 @@ paramk,23,160,4	script	Lady Seraphine Vellmont#offline	4_EP16_EGEO,{
 			if (.@letter == 13) .@shop$ = "acr0#U";
 			if (.@letter == 14) .@shop$ = "acr0#V";
 			if (.@letter == 15) .@shop$ = "acr0#W";
-		}
-	}
+			}
 	if (.@shop$ == "") close;
 	callfunc "F_BlackMarketDailyRemark", "Lady Seraphine Vellmont", $BlackMarketRateSeraphine;
 	close2;

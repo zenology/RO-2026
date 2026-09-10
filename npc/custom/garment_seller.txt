@@ -8,9 +8,7 @@ paramk,24,160,4	script	Weaver#offline	4_ED_OSCAR,{
 	mes "[Madame Mireille]";
 	mes "They dragged me here for my hands, not my company.";
 	mes "Since I am already trapped, I may as well cut you a proper cloak. Pick what you need.";
-	.@cat = select("Equipment:") - 1;
 	.@shop$ = "";
-	if (.@cat == 0) {
 		.@letter = select("A:B:C:D:E:F:G:H:I:J:K:L:M:N:O:P:R:S:T:U:V:W:Y") - 1;
 		if (.@letter == 0) .@shop$ = "gar0#A";
 		if (.@letter == 1) .@shop$ = "gar0#B";
@@ -35,8 +33,7 @@ paramk,24,160,4	script	Weaver#offline	4_ED_OSCAR,{
 		if (.@letter == 20) .@shop$ = "gar0#V";
 		if (.@letter == 21) .@shop$ = "gar0#W";
 		if (.@letter == 22) .@shop$ = "gar0#Y";
-	}
-	if (.@shop$ == "") close;
+		if (.@shop$ == "") close;
 	callfunc "F_BlackMarketDailyRemark", "Weaver", $BlackMarketRateWeaver;
 	close2;
 	callblackmarketshop .@shop$, 1, $BlackMarketRateWeaver;
