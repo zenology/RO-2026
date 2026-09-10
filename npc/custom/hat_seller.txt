@@ -134,15 +134,15 @@ paramk,41,173,2	script	Harlan#offline	897,{
 	setarray .IroId[520], 5040,5047,5065,5084,5086,5108,5121,5146,5151,5152,5170,5173,5174,5175,5185,5187,5191,5192,5194,5195;
 	setarray .IroId[540], 5196,5197,5200,5205,5238,5239,5240,5241,5243,5254,5257,5297,5258,5298,5273,5275,5274,5259,5271,5272;
 	setarray .IroId[560], 5352,5355,5800;
-	setarray .IroId[563], 410017,420076;
+	setarray .IroId[563], 410017,420076,410091,410092,410093,410094;
 	setarray .IroPrice[520], 900,100,900,1200,1800,975,3900,440,2500,320,2400,1560,1560,1600,500,1560,1000,1000,1000,1000;
 	setarray .IroPrice[540], 1000,1000,100,1000,1000,1000,1000,1000,1900,1500,1200,1560,1920,3300,1000,1000,1000,1200,1900,1200;
 	setarray .IroPrice[560], 100,2000,2200;
-	setarray .IroPrice[563], 1300,2100;
+	setarray .IroPrice[563], 1300,2100,2000,2600,2100,2550;
 	setarray .IroDisp$[520], "Party Recruiter Hat","BF Recruiter Hat","Friend Recruiter Hat","GF Recruiter Hat","Helm of Darkness","Boy's Cap","Boy's Cap","Lord Kaho's Horn","Hat of the Sun God","Valkyrie Helm","Cyclop's Eye","Spore Hat","Raccoon Hat","Blush","Fashionable Glasses","Blue Fish","Evil Wing Ears","Angel Wing Ears","Lazy Smokie","Alarm Mask";
 	setarray .IroDisp$[540], "Renown Detective's Cap","Zealotus Mask","Elephant Hat","Note Headphones","Chinese Crown","Feather Beret","Magistrate Hat","Ayam","Censor Bar","Laurel Wreath","Twin Ribbon","Black Ribbon","Yellow Ribbon","Pink Ribbon","Red Ribbon","Orange Ribbon","White Ribbon","Coppola","Emperor's Laurel Crown","Red Mage Hat";
 	setarray .IroDisp$[560], "Brown Mage Hat","Blue Mage Hat","Shafka";
-	setarray .IroDisp$[563], "Battle Processor","Bondage Necklace";
+	setarray .IroDisp$[563], "Battle Processor","Bondage Necklace","Cor Core Booster","Cor Core Booster","Chain of Seals","Chain of Seals";
 OnInit:
 	freeloop 1;
 	// iRO cash-shop real hats, plus easy/medium/hard real hats from the iRO-history create pass and the migrated legacy Headgear 05 shop. Ordinary farmable and city hats are omitted even if they appeared in a Kafra package or lucky scroll. _C copies and rental SKUs are omitted. Dedicated getitem originals such as Robo Eye 5325 are included. Hats with no client itemInfo stay on the shelf. Create-pass hats whose names used to start with [Event]/[S2]/[S3] sit on Event.
@@ -174,9 +174,9 @@ OnInit:
 	setarray .IroId[500], 5303,5304,5312,5317,5319,5320,5323,5336,5337,5338,5339,5346,5181,5349,5013,5022,5171,5135,5029,5033;
 	setarray .IroId[520], 5040,5047,5065,5084,5086,5108,5121,5146,5151,5152,5170,5173,5174,5175,5185,5187,5191,5192,5194,5195;
 	setarray .IroId[540], 5196,5197,5200,5205,5238,5239,5240,5241,5243,5254,5257,5297,5258,5298,5273,5275,5274,5259,5271,5272;
-	setarray .IroId[560], 5352,5355,5800,410017,420076,5428,5452,5453,5603,5604,5605,5892,5893,5894,18779,18780,18781,18796,18828,18829;
-	setarray .IroId[580], 18830,19189,19190,19191,19192,19193,19194,19195,19196,19197,19198,19199,19200,19201,19202,19203,19204,19205,19396,19397;
-	setarray .IroId[600], 401146,420513,420701,420884,420898,401091,401019,401460,420899,15972;
+	setarray .IroId[560], 5352,5355,5800,410017,420076,410091,410092,410093,410094,5428,5452,5453,5603,5604,5605,5892,5893,5894,18779,18780,18781,18796,18828,18829;
+	setarray .IroId[584], 18830,19189,19190,19191,19192,19193,19194,19195,19196,19197,19198,19199,19200,19201,19202,19203,19204,19205,19396,19397;
+	setarray .IroId[604], 401146,420513,420701,420884,420898,401091,401019,401460,420899,15972;
 	setarray .IroPrice[0], 200,100,1000,2200,1000,100,1000,1200,100,380,1000,3125,500,260,975,200,1000,2250,2000,2040;
 	setarray .IroPrice[20], 1200,200,200,1000,440,1000,240,2000,200,200,1600,200,1000,1200,1200,2000,1000,1560,260,260;
 	setarray .IroPrice[40], 200,1200,1000,1200,1200,1200,260,1600,1200,600,3000,3750,3000,3000,3750,5075,1500,3360,1500,1000;
@@ -205,9 +205,9 @@ OnInit:
 	setarray .IroPrice[500], 1000,2280,380,1200,1560,1200,200,100,100,100,100,100,260,975,1000,200,1500,1000,100,100;
 	setarray .IroPrice[520], 900,100,900,1200,1800,975,3900,440,2500,320,2400,1560,1560,1600,500,1560,1000,1000,1000,1000;
 	setarray .IroPrice[540], 1000,1000,100,1000,1000,1000,1000,1000,1900,1500,1200,1560,1920,3300,1000,1000,1000,1200,1900,1200;
-	setarray .IroPrice[560], 100,2000,2200,1300,2100,2200,5075,5075,4200,4200,4200,1000,1000,1000,3100,2500,1900,1140,1300,1300;
-	setarray .IroPrice[580], 1300,2850,3150,3450,2250,3000,5850,2850,3150,4050,3150,4200,2250,2250,2250,3450,2850,3000,2850,5000;
-	setarray .IroPrice[600], 100,1700,100,2600,2000,2400,2100,2100,3000,100;
+	setarray .IroPrice[560], 100,2000,2200,1300,2100,2000,2600,2100,2550,2200,5075,5075,4200,4200,4200,1000,1000,1000,3100,2500,1900,1140,1300,1300;
+	setarray .IroPrice[584], 1300,2850,3150,3450,2250,3000,5850,2850,3150,4050,3150,4200,2250,2250,2250,3450,2850,3000,2850,5000;
+	setarray .IroPrice[604], 100,1700,100,2600,2000,2400,2100,2100,3000,100;
 	setarray .IroDisp$[0], "Snake Head Hat","Assassin Mask","Crunch Toast","Tiara","Crown","Opera Masque","Welding Mask","Binoculars","Hair Band","Bunny Band","Golden Gear","Majestic Goat","Sakkat","Baby Pacifier","Romantic White Flower","Spiky Band","Spiky Band","Dark Blinder","Blinker","Chef Hat";
 	setarray .IroDisp$[20], "Deviruchi Hat","Tulip Hairpin","Tiger Mask","Neko Mimi","Takius Blindfold","Blank Eyes","2nd Anniversary Hat","Mystic Rose","Sheep Hat","Alice Doll","Magic Eyes","Hibiscus","Charming Ribbon","Crescent Helm","Corsair","Puppy Hat","Captain's Hat","Wandering Minstrel Hat","Green Ribbon","Rideword Hat";
 	setarray .IroDisp$[40], "Flapping Angel Wings","Dress Hat","Moonlight Flower Hat","Evolved Majestic Goat","Evolved Bunny Band","Evolved Drooping Kitty","Evolved Pipe","Evolved Pair of Red Ribbon","Evolved Blue Fish","Mini Propeller","Gray Deviruchi Hat","Brown Deviruchi Hat","Blue Drooping Kitty","Pink Beanie","Yellow Magician Hat","Elven Sunglasses","Triple Poring Hat","Flapping Angel Wings","Fantastic Wig","Chick Hat";
@@ -268,9 +268,9 @@ OnInit:
 	setarray .IroClientDisp$[500], "Flower Crown","Cap of Blindness","Ayothaya King's Hat","Fisherman Hat","Arc Angeling Hat","Champion Wreath","Mistress Crown","Guildsman Recruiter Hat","Party Recruiter Hat","Battlefield Recruiter Hat","Friend Recruiter Hat","Gf Recruiter Hat","Helm of Darkness","Boy's Cap","Lord Kaho's Horn","Hat of the Sun God","Valkyrie Helm","Cyclop's Eye","Spore Hat","Raccoon Hat";
 	setarray .IroClientDisp$[520], "Blush","Fashionable Glasses","Blue Fish","Lazy Smokie","Alarm Mask","Renown Detective's Cap","Zealotus Mask","Elephant Hat","Note Headphone","Chinese Crown","Feather Beret","Magistrate Hat","Ayam","Censor Bar","Laurel Wreath","Twin Red Ribbon","Black Ribbon","Yellow Ribbon","Pink Ribbon","Red Ribbon";
 	setarray .IroClientDisp$[540], "Orange Ribbon","White Ribbon","Coppola","Emperor's Laurel Crown","Red Magician Hat","Gray Magician Hat","Brown Magician Hat","Blue Magician Hat","Shafka","Devilring Hat","Soulless Ring","Soul Wing","Afro Wig","Dokkaebi's Wig","Happy Wig","Marvelous Wig","Shiny Wig","Elephant Hat","Phoenix Crown","Tongue Mask";
-	setarray .IroClientDisp$[560], "Poporing Hat","Selendang","Blush of Groom","Battle Processor","Bondage Necklace","RWC Anniversary Bread Envelope","Silver Dragon Helm","Copper Dragon Helm","RWC Statue(Winner)","RWC Statue(2nd)","RWC Statue(3rd)","RCC2013 1st Crown","RCC2013 2nd Crown","RCC2013 3rd Crown","RWC Champ Crown(1st)","RWC Champ Crown(2nd)","RWC Champ Crown(3rd)","RWC Crown of Victory(8th)","RMSC2012 Champion Headgear","RMSC2012 1st Runner Headgear";
-	setarray .IroClientDisp$[580], "RMSC2012 2nd Runner Headgear","Racing Cap(Mechanic)","Racing Cap(Genetic)","Racing Cap(Guillotine Cross)","Racing Cap(Shadow Chaser)","Racing Cap(Warlock)","Racing Cap(Sorcerer)","Racing Cap(Rune Knight)","Racing Cap(Royal Guard)","Racing Cap(Archbishop)","Racing Cap(Sura)","Racing Cap(Ranger)","Racing Cap(Minstrel)","Racing Cap(Wanderer)","Racing Cap(Gunslinger)","Racing Cap(Ninja)","Racing Cap(Super Novice)","Racing Cap(Summoner)","Racing Cap(Star Gladiator)","Racing Cap(Soul Linker)";
-	setarray .IroClientDisp$[600], "Santa Claus Hat","Chewy Seaweed","Santa Claus Beard","23rd Anniversary Scarf","Nyar's Familiar","Sewer Warrior Hat","Issgard Helmet","Serpent Knight Helm","Nyar's Familiar-VG","Happy Balloon";
+	setarray .IroClientDisp$[560], "Poporing Hat","Selendang","Blush of Groom","Battle Processor","Bondage Necklace","Cor Core Booster","Cor Core Booster","Chain of Seals","Chain of Seals","RWC Anniversary Bread Envelope","Silver Dragon Helm","Copper Dragon Helm","RWC Statue(Winner)","RWC Statue(2nd)","RWC Statue(3rd)","RCC2013 1st Crown","RCC2013 2nd Crown","RCC2013 3rd Crown","RWC Champ Crown(1st)","RWC Champ Crown(2nd)","RWC Champ Crown(3rd)","RWC Crown of Victory(8th)","RMSC2012 Champion Headgear","RMSC2012 1st Runner Headgear";
+	setarray .IroClientDisp$[584], "RMSC2012 2nd Runner Headgear","Racing Cap(Mechanic)","Racing Cap(Genetic)","Racing Cap(Guillotine Cross)","Racing Cap(Shadow Chaser)","Racing Cap(Warlock)","Racing Cap(Sorcerer)","Racing Cap(Rune Knight)","Racing Cap(Royal Guard)","Racing Cap(Archbishop)","Racing Cap(Sura)","Racing Cap(Ranger)","Racing Cap(Minstrel)","Racing Cap(Wanderer)","Racing Cap(Gunslinger)","Racing Cap(Ninja)","Racing Cap(Super Novice)","Racing Cap(Summoner)","Racing Cap(Star Gladiator)","Racing Cap(Soul Linker)";
+	setarray .IroClientDisp$[604], "Santa Claus Hat","Chewy Seaweed","Santa Claus Beard","23rd Anniversary Scarf","Nyar's Familiar","Sewer Warrior Hat","Issgard Helmet","Serpent Knight Helm","Nyar's Familiar-VG","Happy Balloon";
 	// Generated by KB tools/audit_harlan_hat_prices.py from the confirmed pricing taxonomy.
 	// Generated by KB tools/audit_harlan_hat_prices.py from the condition-aware pricing taxonomy.
 	// Confirmed endgame headgear families. Families already sold by the imported Cash Mall exchange (Good and Evil and Furious) stay out of Harlan.
