@@ -4,7 +4,7 @@
 //= Source: reference/black-market-equipment-search-index.json only.
 //============================================================
 
-paramk,24,172,4	script	Riven#offline	4_M_ROGUE,{
+paramk,24,172,2	script	Riven#offline	4_M_ROGUE,{
 	mes "[Riven]";
 	mes "Ah, a customer. Good! I am Riven, the sort of person who cannot walk past a stall without talking to its owner.";
 	mes "A word here, a rumor there, a shared drink after closing... before long, every merchant in this market knows my face.";
