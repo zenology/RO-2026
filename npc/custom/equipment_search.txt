@@ -6,7 +6,9 @@
 
 paramk,24,172,4	script	Riven#offline	4_M_ROGUE,{
 	mes "[Riven]";
-	mes "Tell me the equipment name, or an exact Item ID.";
+	mes "Ah, a customer. Good! I am Riven, the sort of person who cannot walk past a stall without talking to its owner.";
+	mes "A word here, a rumor there, a shared drink after closing... before long, every merchant in this market knows my face.";
+	mes "You need equipment, I know who has it. Give me a name or an exact Item ID, and I will contact the right people for you.";
 	input .@raw$;
 	.@start = 0;
 	.@end = getstrlen(.@raw$) - 1;
@@ -47,55 +49,23 @@ paramk,24,172,4	script	Riven#offline	4_M_ROGUE,{
 	}
 	freeloop(0);
 	if (!getarraysize(.@match)) goto L_NoResults;
-	.@page = 0;
+	goto L_OpenResults;
 
-L_Page:
-	.@first = .@page * 10;
-	.@last = .@first + 9;
-	if (.@last >= getarraysize(.@match)) .@last = getarraysize(.@match) - 1;
+L_OpenResults:
+	clear;
 	mes "[Riven]";
-	mes getarraysize(.@match) + " matching item(s). Page " + (.@page + 1) + ".";
-	for (.@result = .@first; .@result <= .@last; .@result++) {
+	mes "I found " + getarraysize(.@match) + " item(s). I will let their owners know you are looking.";
+	freeloop(1);
+	for (.@result = 0; .@result < getarraysize(.@match); .@result++) {
 		.@index = .@match[.@result];
 		.@rate = callsub(S_RateForKey, .RateKey[.@index]);
-		if (.@rate < -10 || .@rate > 30) goto L_InvalidRate;
+		if (.@rate < -10 || .@rate > 30) { freeloop(0); goto L_InvalidRate; }
 		.@price = (.BasePrice[.@index] * (100 + .@rate) + 50) / 100;
-		if (.@price <= 0) goto L_InvalidRate;
-		mes mesitemlink(.ItemId[.@index], false) + " - " + .BasePrice[.@index] + " CP base, " + .@price + " CP today (" + .SellerName$[.@index] + ", " + .@rate + "% )";
+		if (.@price <= 0) { freeloop(0); goto L_InvalidRate; }
+		if (.@result == 0) npcshopitem "Riven_SearchShop", .ItemId[.@index], .@price;
+		else npcshopadditem "Riven_SearchShop", .ItemId[.@index], .@price;
 	}
-	.@menu$ = "Open this page";
-	if (.@page > 0) .@menu$ += ":Previous";
-	if (.@last + 1 < getarraysize(.@match)) .@menu$ += ":Next";
-	.@menu$ += ":New search:Close";
-	.@choice = select(.@menu$);
-	if (.@choice == 1) goto L_OpenPage;
-	.@offset = 1;
-	if (.@page > 0) {
-		if (.@choice == 2) { .@page--; goto L_Page; }
-		.@offset++;
-	}
-	if (.@last + 1 < getarraysize(.@match)) {
-		if (.@choice == .@offset + 1) { .@page++; goto L_Page; }
-		.@offset++;
-	}
-	if (.@choice == .@offset + 1) goto L_Restart;
-	close;
-
-L_OpenPage:
-	.@index = .@match[.@first];
-	.@rate = callsub(S_RateForKey, .RateKey[.@index]);
-	if (.@rate < -10 || .@rate > 30) goto L_InvalidRate;
-	.@price = (.BasePrice[.@index] * (100 + .@rate) + 50) / 100;
-	if (.@price <= 0) goto L_InvalidRate;
-	npcshopitem "Riven_SearchShop", .ItemId[.@index], .@price;
-	for (.@result = .@first + 1; .@result <= .@last; .@result++) {
-		.@index = .@match[.@result];
-		.@rate = callsub(S_RateForKey, .RateKey[.@index]);
-		if (.@rate < -10 || .@rate > 30) goto L_InvalidRate;
-		.@price = (.BasePrice[.@index] * (100 + .@rate) + 50) / 100;
-		if (.@price <= 0) goto L_InvalidRate;
-		npcshopadditem "Riven_SearchShop", .ItemId[.@index], .@price;
-	}
+	freeloop(0);
 	close2;
 	callshop "Riven_SearchShop", 0;
 	end;
@@ -103,13 +73,11 @@ L_OpenPage:
 L_TooShort:
 	mes "[Riven]";
 	mes "Names need at least four characters. Numeric Item IDs may be any length.";
-	if (select("Try again:Close") == 1) goto L_Restart;
 	close;
 
 L_NoResults:
 	mes "[Riven]";
-	mes "Nothing in the Equipment catalog matches that search.";
-	if (select("Try again:Close") == 1) goto L_Restart;
+	mes "I could not find anything in the catalog for that.";
 	close;
 
 L_InvalidRate:
@@ -172,8 +140,7 @@ L_AfterInput:
 	}
 	freeloop(0);
 	if (!getarraysize(.@match)) goto L_NoResults;
-	.@page = 0;
-	goto L_Page;
+	goto L_OpenResults;
 
 OnInit:
 	setunittitle(getnpcid(0), "<Equipment Search>");
