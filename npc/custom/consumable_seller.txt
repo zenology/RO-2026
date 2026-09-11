@@ -89,6 +89,7 @@ paramk,39,185,4	script	Rooke#offline	542,{
 S_OpenCategory:
 	.@cat = getarg(0);
 	if (!getvariableofnpc(.CatHas[.@cat], "cons_seller_db")) {
+		clear;
 		mes "[Rooke]";
 		mes "Tch. Empty bottle. Ask me for something else.";
 		close;

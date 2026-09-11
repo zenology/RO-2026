@@ -71,16 +71,19 @@ L_OpenResults:
 	end;
 
 L_TooShort:
+	clear;
 	mes "[Riven]";
 	mes "Names need at least four characters. Numeric Item IDs may be any length.";
 	close;
 
 L_NoResults:
+	clear;
 	mes "[Riven]";
 	mes "I could not find anything in the catalog for that.";
 	close;
 
 L_InvalidRate:
+	clear;
 	mes "[Riven]";
 	mes "That listing cannot be priced safely right now. Please try again later.";
 	close;

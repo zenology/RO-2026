@@ -269,6 +269,7 @@ paramk,51,186,4	script	Veynar#offline	10576,{
 		callblackmarketshop "card_mvp#" + getvariableofnpc( .alphabet$[.@s], "mvp_card_seller_creation" ), 1, $BlackMarketRateCards;
 		end;
 	case 2:
+		clear;
 		mes "[Veynar]";
 		mes "^777777...This one has taste.^000000";
 		mes "So, you know I keep something more valuable.";

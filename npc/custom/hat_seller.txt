@@ -34,6 +34,7 @@ paramk,41,173,2	script	Harlan#offline	897,{
 	.@slot = select("Top:Middle:Lower:") - 1;
 	.@menu$ = getvariableofnpc(.HatMenu$[.@slot], "hat_seller_db");
 	if (.@menu$ == "") {
+		clear;
 		mes "[Harlan]";
 		mes "That drawer is empty. Try another.";
 		close;

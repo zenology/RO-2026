@@ -20,10 +20,13 @@ paramk,41,159,4	script	Black Market Boss#offline	4_M_MANAGER,{
 	next;
 	switch (select("Sell one card type.:Sell every accepted card.:Check points and loyalty.:Leave.")) {
 	case 1:
+		clear;
 		goto L_Single;
 	case 2:
+		clear;
 		goto L_Bulk;
 	case 3:
+		clear;
 		mes "[Black Market Boss]";
 		mes "Your account has ^0055FF" + #CASHPOINTS + " Cash Points^000000.";
 		mes "Normal-card loyalty: ^0055FF" + #CC_Normal + " / 30^000000.";
@@ -84,6 +87,7 @@ L_Single:
 			.@cancel_option = ++.@option_count;
 
 			.@action = select(.@menu$);
+			clear;
 			if (.@action == .@next_option) {
 				++.@page;
 				continue;
@@ -100,6 +104,7 @@ L_Single:
 		mes "[Black Market Boss]";
 		mes "Enter the number shown beside the card.";
 		input .@selection, .@start + 1, .@end;
+		clear;
 		.@selected_id = .@card_ids[.@selection - 1];
 		.@owned = countitem(.@selected_id);
 
@@ -107,6 +112,7 @@ L_Single:
 		mes "You have " + .@owned + " " + mesitemlink(.@selected_id, false) + ".";
 		mes "How many are you offering me?";
 		input .@amount, 1, .@owned;
+		clear;
 		.@points_each = callsub(S_GetOffer, .@selected_id);
 		.@payment = .@amount * .@points_each;
 		.@tier = callsub(S_GetTier, .@selected_id);
@@ -118,6 +124,7 @@ L_Single:
 		next;
 		if (select("Sell the cards.:Keep them.") != 1)
 			close;
+		clear;
 
 		// Roll every completed loyalty milestone before committing so the
 		// complete reward bundle can be checked for inventory capacity.
@@ -313,6 +320,7 @@ L_Bulk:
 	next;
 	if (select("Sell every accepted card.:Keep everything.") != 1)
 		close;
+	clear;
 
 	.@new_normal = #CC_Normal + .@bulk_normal;
 	.@normal_milestones = .@new_normal / 30;
@@ -513,6 +521,7 @@ S_Warn:
 	return;
 }
 
+
 paramk,41,157,2	duplicate(Guard#card_collector_1)	Guard#card_collector_2	405,2,1
 
 // Room-entrance guard: same balloon warning pattern, different sprite and lines.
@@ -522,6 +531,7 @@ paramk,14,175,4	script	Guard#black_market_door	686,2,1,{
 	next;
 	if (select("How are the market rates today?:Never mind.") == 2)
 		close;
+	clear;
 
 	mes "[Guard]";
 	mes "The current adjustment is against each drawer's listed Cash Point price.";
@@ -558,4 +568,3 @@ S_Warn:
 	}
 	return;
 }
-

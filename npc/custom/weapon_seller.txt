@@ -108,7 +108,12 @@ paramk,51,175,2	script	Soren#offline	4_M_ROTERT,{
 	if (.@type == 21) {
 		.@shop$ = "wep21_0#ALL";
 	}
-	if (.@shop$ == "") { mes "[Soren]"; mes "That crate is empty. Try another drawer."; close; }
+	if (.@shop$ == "") {
+		clear;
+		mes "[Soren]";
+		mes "That crate is empty. Try another drawer.";
+		close;
+	}
 	callfunc "F_BlackMarketDailyRemark", "Soren", $BlackMarketRateSoren;
 	close2;
 	callblackmarketshop .@shop$, 1, $BlackMarketRateSoren;

@@ -46,6 +46,7 @@ paramk,43,181,4	script	Vesper#bm_enhance	4_F_BERRYTEA,{
 		.@menu$ += .@chosen_label$[.@i] + " - " + getitemname(.@chosen_item[.@i]) + ":";
 	.@choice = select(.@menu$ + "Cancel") - 1;
 	if (.@choice == .@count) close;
+	clear;
 	.@slot = .@chosen_slot[.@choice];
 	.@type = .@chosen_type[.@choice];
 	.@uid$ = .@chosen_uid$[.@choice];
@@ -60,6 +61,7 @@ paramk,43,181,4	script	Vesper#bm_enhance	4_F_BERRYTEA,{
 	mes "Current Random Options: " + .@existing + ". Price: ^0055FF" + .@price + " Cash Points^000000.";
 	mes "This experiment replaces all five option slots. Every existing Random Option will be cleared.";
 	if (select("Replace all options:Cancel") == 2) close;
+	clear;
 
 	.@rolled = 0;
 	if (rand(100) < 70) {
