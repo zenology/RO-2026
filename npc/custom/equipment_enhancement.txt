@@ -96,11 +96,26 @@ paramk,43,181,4	script	Vesper#bm_enhance	4_F_BERRYTEA,{
 			mes "How maddening! The option registry is invalid. No points were charged and your item was not changed.";
 			close;
 		}
-		.@selected_index = .@candidate_index[rand(.@candidate_count)];
-		.@roll_id[.@slot_index] = getelementofarray(getvariableofnpc(.OptionId[0], "equipment_enhancement_db"), .@selected_index);
-		.@minimum = getelementofarray(getvariableofnpc(.OptionMin[0], "equipment_enhancement_db"), .@selected_index);
-		.@maximum = getelementofarray(getvariableofnpc(.OptionMax[0], "equipment_enhancement_db"), .@selected_index);
-		.@roll_value[.@slot_index] = .@minimum + rand(.@maximum - .@minimum + 1);
+		if (.@slot_index == 0 && inarray(getvariableofnpc(.CrimsonItemId[0], "equipment_enhancement_db"), .@item) != -1) {
+			// Registry generator enforces the ten approved Crimson elements.
+			.@element_count = 10;
+			.@weight_total = 0;
+			for (.@i = 0; .@i < .@element_count; ++.@i)
+				.@weight_total += getelementofarray(getvariableofnpc(.CrimsonOptionWeight[0], "equipment_enhancement_db"), .@i);
+			.@element_roll = rand(.@weight_total);
+			for (.@i = 0; .@i < .@element_count; ++.@i) {
+				.@element_roll -= getelementofarray(getvariableofnpc(.CrimsonOptionWeight[0], "equipment_enhancement_db"), .@i);
+				if (.@element_roll < 0) break;
+			}
+			.@roll_id[.@slot_index] = getelementofarray(getvariableofnpc(.CrimsonOptionId[0], "equipment_enhancement_db"), .@i);
+			.@roll_value[.@slot_index] = 0;
+		} else {
+			.@selected_index = .@candidate_index[rand(.@candidate_count)];
+			.@roll_id[.@slot_index] = getelementofarray(getvariableofnpc(.OptionId[0], "equipment_enhancement_db"), .@selected_index);
+			.@minimum = getelementofarray(getvariableofnpc(.OptionMin[0], "equipment_enhancement_db"), .@selected_index);
+			.@maximum = getelementofarray(getvariableofnpc(.OptionMax[0], "equipment_enhancement_db"), .@selected_index);
+			.@roll_value[.@slot_index] = .@minimum + rand(.@maximum - .@minimum + 1);
+		}
 	}
 
 	.@result = blackmarketenhance(.@slot, .@uid$, .@roll_id, .@roll_value, .@roll_param);
